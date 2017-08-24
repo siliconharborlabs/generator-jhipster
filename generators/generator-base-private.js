@@ -1,7 +1,7 @@
 /**
  * Copyright 2013-2017 the original author or authors from the JHipster project.
  *
- * This file is part of the JHipster project, see https://jhipster.github.io/
+ * This file is part of the JHipster project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,9 +48,9 @@ module.exports = class extends Generator {
         this.env.options.appPath = this.config.get('appPath') || CLIENT_MAIN_SRC_DIR;
     }
 
-    /*= =======================================================================*/
-    /* private methods use within generator (not exposed to modules)*/
-    /*= =======================================================================*/
+    /* ======================================================================== */
+    /* private methods use within generator (not exposed to modules) */
+    /* ======================================================================== */
 
     installI18nClientFilesByLanguage(_this, webappDir, lang) {
         const generator = _this || this;
@@ -613,5 +613,49 @@ module.exports = class extends Generator {
             } return false;
         }
         return false;
+    }
+
+    /**
+     * Return the method name which converts the filter to specification
+     * @param {string} fieldType
+     */
+    getSpecificationBuilder(fieldType) {
+        if (['Integer', 'Long', 'Float', 'Double', 'BigDecimal', 'LocalDate', 'ZonedDateTime', 'Instant'].includes(fieldType)) {
+            return 'buildRangeSpecification';
+        }
+        if (fieldType === 'String') {
+            return 'buildStringSpecification';
+        }
+        return 'buildSpecification';
+    }
+
+    isFilterableType(fieldType) {
+        return !(['byte[]', 'ByteBuffer'].includes(fieldType));
+    }
+
+    copyFilteringFlag(from, to) {
+        if (this.databaseType === 'sql' && this.service !== 'no') {
+            to.jpaMetamodelFiltering = from.jpaMetamodelFiltering;
+        } else {
+            to.jpaMetamodelFiltering = false;
+        }
+    }
+
+    // rebuild client for Angular1
+    injectJsFilesToIndex() {
+        const done = this.async();
+        this.log(`\n${chalk.bold.green('Running `gulp inject` to add JavaScript to index.html\n')}`);
+        this.spawnCommand('gulp', ['inject:app']).on('close', () => {
+            done();
+        });
+    }
+
+    // rebuild client for Angular
+    rebuildClient() {
+        const done = this.async();
+        this.log(`\n${chalk.bold.green('Running `webpack:build` to update client app\n')}`);
+        this.spawnCommand(this.clientPackageManager, ['run', 'webpack:build']).on('close', () => {
+            done();
+        });
     }
 };
