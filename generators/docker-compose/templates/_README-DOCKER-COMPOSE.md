@@ -1,4 +1,4 @@
-# JHipster generated Docker-Compose configuration
+# StackStack generated Docker-Compose configuration
 
 ## Usage
 
@@ -10,7 +10,7 @@ Launch all your infrastructure by running: `docker-compose up -d`.
 ### Service registry and configuration server:
 <%_ } _%>
 <%_ if (serviceDiscoveryType === 'eureka') { _%>
-- [JHipster Registry](http://localhost:8761)
+- [StackStack Registry](http://localhost:8761)
 <%_ } _%>
 <%_ if (serviceDiscoveryType === 'consul') { _%>
 - [Consul](http://localhost:8500)
@@ -32,7 +32,7 @@ Launch all your infrastructure by running: `docker-compose up -d`.
 - Zookeeper
 <%_ } _%>
 <%_ if (monitoring === 'elk') { _%>
-- [JHipster Console](http://localhost:5601)
+- [StackStack Console](http://localhost:5601)
 <%_ if (consoleOptions.includes('zipkin')) { _%>
 - [Zipkin](http://localhost:9411)
 <%_ } _%>

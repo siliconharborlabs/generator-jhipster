@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,10 +34,10 @@ metadata:
     tags: <%= app.baseName.toLowerCase() %>, service
     openshift.io/display-name: <%= app.baseName.toLowerCase() %>-template
     openshift.io/long-description: This template provides objects that are required to spin up a <%= app.baseName.toLowerCase() %> service pod.
-    openshift.io/provider-display-name: JHipster
+    openshift.io/provider-display-name: StackStack
 labels:
   app: <%= app.baseName.toLowerCase() %>-app
-  createdBy: JHipster-Team
+  createdBy: StackStack-Team
 parameters:
   -
     name: APPLICATION_NAME

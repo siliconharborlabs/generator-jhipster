@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -198,7 +198,7 @@ module.exports = EntityGenerator.extend({
             } else if (this.name.indexOf('Detail', this.name.length - 'Detail'.length) !== -1) {
                 this.error(chalk.red('The entity name cannot end with \'Detail\''));
             } else if (!this.skipServer && jhiCore.isReservedClassName(this.name)) {
-                this.error(chalk.red('The entity name cannot contain a Java or JHipster reserved keyword'));
+                this.error(chalk.red('The entity name cannot contain a Java or StackStack reserved keyword'));
             }
         },
 

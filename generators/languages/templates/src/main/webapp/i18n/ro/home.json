@@ -5,15 +5,15 @@
         "logged": {
             "message": "Ești autentificat cu numele de utilizator \"{{username}}\"."
         },
-        "question": "Dacă ai orice întrebări în legatură cu JHipster:",
+        "question": "Dacă ai orice întrebări în legatură cu StackStack:",
         "link": {
-            "homepage": "Pagina JHipster",
-            "stackoverflow": "JHipster pe Stack Overflow",
-            "bugtracker": "JHipster bug tracker",
-            "chat": "Camera de chat publică pentru JHipster",
+            "homepage": "Pagina StackStack",
+            "stackoverflow": "StackStack pe Stack Overflow",
+            "bugtracker": "StackStack bug tracker",
+            "chat": "Camera de chat publică pentru StackStack",
             "follow": "Contactează @java_hipster pe Twitter"
         },
-        "like": "Dacă iți place JHipster nu uita să ne dai o stea pe",
+        "like": "Dacă iți place StackStack nu uita să ne dai o stea pe",
         "github": "GitHub"
     }
 }

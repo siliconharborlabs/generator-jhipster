@@ -1,11 +1,11 @@
 Description:
-    This sub-generator is to be used by JHipster modules, so they can access the
-    main JHipster configuration and variables.
+    This sub-generator is to be used by StackStack modules, so they can access the
+    main StackStack configuration and variables.
 
 Example:
     This sub-generator is not meant to be used directly.
 
-You can compose this sub-generator from a JHipster module, which is itself a generator,
+You can compose this sub-generator from a StackStack module, which is itself a generator,
 using:
 
 const configuration = {'moduleName': 'my-own-generator'};

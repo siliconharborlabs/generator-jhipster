@@ -5,15 +5,15 @@
         "logged": {
             "message": "Anda login sebagai \"{{username}}\"."
         },
-        "question": "Jika anda punya pertanyaan tentang JHipster:",
+        "question": "Jika anda punya pertanyaan tentang StackStack:",
         "link": {
-            "homepage": "JHipster homepage",
-            "stackoverflow": "JHipster on Stack Overflow",
-            "bugtracker": "JHipster bug tracker",
-            "chat": "JHipster public chat room",
+            "homepage": "StackStack homepage",
+            "stackoverflow": "StackStack on Stack Overflow",
+            "bugtracker": "StackStack bug tracker",
+            "chat": "StackStack public chat room",
             "follow": "follow @java_hipster on Twitter"
         },
-        "like": "Jika anda menyukai JHipster, jangan lupa beri kami rating",
+        "like": "Jika anda menyukai StackStack, jangan lupa beri kami rating",
         "github": "GitHub"
     }
 }

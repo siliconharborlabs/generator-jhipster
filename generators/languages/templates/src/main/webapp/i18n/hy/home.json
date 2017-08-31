@@ -5,15 +5,15 @@
         "logged": {
             "message": "Դուք մուտք եք գործել որպես օգտվող \"{{username}}\"."
         },
-        "question": "Եթե Ձեզ մոտ առաջացել են հարցեր JHipster:",
+        "question": "Եթե Ձեզ մոտ առաջացել են հարցեր StackStack:",
         "link": {
-            "homepage": "JHipster գլխավոր էջ",
-            "stackoverflow": "JHipster on Stack Overflow",
-            "bugtracker": "JHipster bug tracker",
-            "chat": "JHipster public chat room",
+            "homepage": "StackStack գլխավոր էջ",
+            "stackoverflow": "StackStack on Stack Overflow",
+            "bugtracker": "StackStack bug tracker",
+            "chat": "StackStack public chat room",
             "follow": "follow @java_hipster on Twitter"
         },
-        "like": "Եթե Ձեզ դուր է գալիս JHipster, մի մոռացեք տալ Մեզ աստղ",
+        "like": "Եթե Ձեզ դուր է գալիս StackStack, մի մոռացեք տալ Մեզ աստղ",
         "github": "GitHub"
     }
 }

@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -200,11 +200,11 @@ function askForMonitoring() {
             },
             {
                 value: 'elk',
-                name: (this.composeApplicationType === 'monolith') ? 'Yes, for logs and metrics with the JHipster Console (based on ELK)' : 'Yes, for logs and metrics with the JHipster Console (based on ELK and Zipkin)'
+                name: (this.composeApplicationType === 'monolith') ? 'Yes, for logs and metrics with the StackStack Console (based on ELK)' : 'Yes, for logs and metrics with the StackStack Console (based on ELK and Zipkin)'
             },
             {
                 value: 'prometheus',
-                name: 'Yes, for metrics only with Prometheus (only compatible with JHipster >= v3.12)'
+                name: 'Yes, for metrics only with Prometheus (only compatible with StackStack >= v3.12)'
             }
         ],
         default: 'no'
@@ -226,7 +226,7 @@ function askForConsoleOptions() {
     const prompts = [{
         type: 'checkbox',
         name: 'consoleOptions',
-        message: 'You have selected the JHipster Console which is based on the ELK stack and additional technologies, which one do you want to use ?',
+        message: 'You have selected the StackStack Console which is based on the ELK stack and additional technologies, which one do you want to use ?',
         choices: [
             {
                 value: 'curator',
@@ -239,7 +239,7 @@ function askForConsoleOptions() {
         prompts[0].choices.push(
             {
                 value: 'zipkin',
-                name: 'Zipkin, for distributed tracing (only compatible with JHipster >= v4.2.0)'
+                name: 'Zipkin, for distributed tracing (only compatible with StackStack >= v4.2.0)'
             });
     }
     this.prompt(prompts).then((props) => {
@@ -272,7 +272,7 @@ function askForServiceDiscovery() {
         done();
     } else if (serviceDiscoveryEnabledApps.every(app => app.serviceDiscoveryType === 'eureka')) {
         this.serviceDiscoveryType = 'eureka';
-        this.log(chalk.green('JHipster registry detected as the service discovery and configuration provider used by your apps'));
+        this.log(chalk.green('StackStack registry detected as the service discovery and configuration provider used by your apps'));
         done();
     } else {
         this.log(chalk.yellow('Unable to determine the service discovery and configuration provider to use from your apps configuration.'));
@@ -288,7 +288,7 @@ function askForServiceDiscovery() {
             choices: [
                 {
                     value: 'eureka',
-                    name: 'JHipster Registry'
+                    name: 'StackStack Registry'
                 },
                 {
                     value: 'consul',
@@ -317,7 +317,7 @@ function askForAdminPassword() {
     const prompts = [{
         type: 'input',
         name: 'adminPassword',
-        message: 'Enter the admin password used to secure the JHipster Registry',
+        message: 'Enter the admin password used to secure the StackStack Registry',
         default: 'admin',
         validate: input => (input.length < 5 ? 'The password must have at least 5 characters' : true)
     }];

@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -120,7 +120,7 @@ module.exports = class extends Generator {
                 content += `            '${language}'${i !== languages.length - 1 ? ',' : ''}\n`;
             });
             content +=
-                '            // jhipster-needle-i18n-language-constant - JHipster will add/remove languages in this array\n' +
+                '            // jhipster-needle-i18n-language-constant - StackStack will add/remove languages in this array\n' +
                 '        ]';
 
             jhipsterUtils.replaceContent({
@@ -142,7 +142,7 @@ module.exports = class extends Generator {
                 content += `    '${language}'${i !== languages.length - 1 ? ',' : ''}\n`;
             });
             content +=
-                '    // jhipster-needle-i18n-language-constant - JHipster will add/remove languages in this array\n' +
+                '    // jhipster-needle-i18n-language-constant - StackStack will add/remove languages in this array\n' +
                 '];';
 
             jhipsterUtils.replaceContent({
@@ -167,7 +167,7 @@ module.exports = class extends Generator {
                 content += `        ${ln}${i !== languages.length - 1 ? ',' : ''}\n`;
             });
             content +=
-                '        // jhipster-needle-i18n-language-key-pipe - JHipster will add/remove languages in this object\n' +
+                '        // jhipster-needle-i18n-language-key-pipe - StackStack will add/remove languages in this object\n' +
                 '    };';
 
             jhipsterUtils.replaceContent({
@@ -189,7 +189,7 @@ module.exports = class extends Generator {
                 content += `                        { pattern: "./src/main/webapp/i18n/${language}/*.json", fileName: "./i18n/${language}.json" }${i !== languages.length - 1 ? ',' : ''}\n`;
             });
             content +=
-                '                        // jhipster-needle-i18n-language-webpack - JHipster will add/remove languages in this array\n' +
+                '                        // jhipster-needle-i18n-language-webpack - StackStack will add/remove languages in this array\n' +
                 '                    ]';
 
             jhipsterUtils.replaceContent({
@@ -319,7 +319,7 @@ module.exports = class extends Generator {
     }
 
     /**
-     * get hibernate SnakeCase in JHipster preferred style.
+     * get hibernate SnakeCase in StackStack preferred style.
      *
      * @param {string} value - table column name or table name string
      * @see org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy

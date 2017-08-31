@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,10 +22,10 @@
         "browsehappy": "Te kasutate <strong>vananenud</strong> veebilehitsejat. Kasutuskogemuse parandamiseks palun <a href=\"http://browsehappy.com/?locale=et\">uuendage oma veebilehitsejat</a>.",
         "menu": {
             "home": "Avaleht",
-            "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+            "jhipster-needle-menu-add-element": "StackStack will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Olemid",
-                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+                "jhipster-needle-menu-add-entry": "StackStack will add additional entities here (do not translate!)"
             },
             "account": {
                 "main": "Konto",
@@ -50,7 +50,7 @@
                 "audits": "Audit",
                 "apidocs": "API",
                 "database": "Andmebaas",
-                "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+                "jhipster-needle-menu-add-admin-element": "StackStack will add additional menu entries here (do not translate!)"
             },
             "language": "Keel"
         },

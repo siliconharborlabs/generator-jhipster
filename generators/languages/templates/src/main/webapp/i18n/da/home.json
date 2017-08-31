@@ -5,15 +5,15 @@
         "logged": {
             "message": "Du er logget ind som bruger \"{{username}}\"."
         },
-        "question": "Hvis du har spørgsmål om JHipster:",
+        "question": "Hvis du har spørgsmål om StackStack:",
         "link": {
-            "homepage": "JHipster homepage",
-            "stackoverflow": "JHipster på Stack Overflow",
-            "bugtracker": "JHipster bug tracker",
-            "chat": "JHipster public chat room",
+            "homepage": "StackStack homepage",
+            "stackoverflow": "StackStack på Stack Overflow",
+            "bugtracker": "StackStack bug tracker",
+            "chat": "StackStack public chat room",
             "follow": "Kontakt @java_hipster på Twitter"
         },
-        "like": "Hvis du kan lide JHipster, så husk at give os en stjerne på",
+        "like": "Hvis du kan lide StackStack, så husk at give os en stjerne på",
         "github": "GitHub"
     }
 }

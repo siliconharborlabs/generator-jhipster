@@ -5,15 +5,15 @@
         "logged": {
             "message": "Jste přihlášen jako \"{{username}}\"."
         },
-        "question": "Pokud máte nějaké dotazy týkající se JHipster:",
+        "question": "Pokud máte nějaké dotazy týkající se StackStack:",
         "link": {
-            "homepage": "Domovská stránka JHipster",
-            "stackoverflow": "JHipster ve službě Stack Overflow",
-            "bugtracker": "Nahlašování chyb JHipster",
-            "chat": "Veřejná chatovací místnost JHipster",
+            "homepage": "Domovská stránka StackStack",
+            "stackoverflow": "StackStack ve službě Stack Overflow",
+            "bugtracker": "Nahlašování chyb StackStack",
+            "chat": "Veřejná chatovací místnost StackStack",
             "follow": "Sledovat @java_hipster ve službě Twitter"
         },
-        "like": "Pokud se vám JHipster líbí, nezapomeňte nám dát hvězdičku ve službě",
+        "like": "Pokud se vám StackStack líbí, nezapomeňte nám dát hvězdičku ve službě",
         "github": "GitHub"
     }
 }

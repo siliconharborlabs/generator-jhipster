@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ eureka:
         prefer-ip-address: true
     client:
         <%_ if (applicationType === 'monolith') { _%>
-        enabled: false # By default, the JHipster Registry is not used in the "dev" profile
+        enabled: false # By default, the StackStack Registry is not used in the "dev" profile
         <%_ } _%>
         service-url:
             defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
@@ -234,7 +234,7 @@ server:
     port: <%= serverPort %>
 
 # ===================================================================
-# JHipster specific properties
+# StackStack specific properties
 #
 # Full reference is available at: http://www.jhipster.tech/common-application-properties/
 # ===================================================================
@@ -324,7 +324,7 @@ jhipster:
             # security key (this key should be unique for your application, and kept secret)
             key: <%= rememberMeKey %>
 <%_ } _%>
-    mail: # specific JHipster mail property, for standard properties see MailProperties
+    mail: # specific StackStack mail property, for standard properties see MailProperties
         from: <%= baseName %>@localhost
         base-url: http://127.0.0.1:<%= serverPort %>
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration

@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -947,11 +947,11 @@
                 <configuration>
                     <rules>
                         <requireMavenVersion>
-                            <message>You are running an older version of Maven. JHipster requires at least Maven ${maven.version}</message>
+                            <message>You are running an older version of Maven. StackStack requires at least Maven ${maven.version}</message>
                             <version>[${maven.version},)</version>
                         </requireMavenVersion>
                         <requireJavaVersion>
-                            <message>You are running an older version of Java. JHipster requires at least JDK ${java.version}</message>
+                            <message>You are running an older version of Java. StackStack requires at least JDK ${java.version}</message>
                             <version>[${java.version}.0,)</version>
                         </requireJavaVersion>
                     </rules>
@@ -1136,9 +1136,9 @@
             </plugin>
             <%_ if (enableSwaggerCodegen) { _%>
             <plugin>
-                <!-- 
-                    Plugin that provides API-first development using swagger-codegen to 
-                    generate Spring-MVC endpoint stubs at compile time from a swagger definition file 
+                <!--
+                    Plugin that provides API-first development using swagger-codegen to
+                    generate Spring-MVC endpoint stubs at compile time from a swagger definition file
                 -->
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-codegen-maven-plugin</artifactId>

@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,10 +22,10 @@
         "browsehappy": "Ваш браузер <strong>устарел</strong>. Пожалуйста <a href=\"http://browsehappy.com/?locale=ru\">обновите ваш браузер</a>.",
         "menu": {
             "home": "Главная",
-            "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+            "jhipster-needle-menu-add-element": "StackStack will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Сущности",
-                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+                "jhipster-needle-menu-add-entry": "StackStack will add additional entities here (do not translate!)"
             },
             "account": {
                 "main": "Профиль",
@@ -50,7 +50,7 @@
                 "audits": "Аудит",
                 "apidocs": "API",
                 "database": "База данных",
-                "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+                "jhipster-needle-menu-add-admin-element": "StackStack will add additional menu entries here (do not translate!)"
             },
             "language": "Язык"
         },

@@ -5,15 +5,15 @@
         "logged": {
             "message": "\"{{username}}\" olarak giriş yaptınız."
         },
-        "question": "JHipster hakkında sorularınız için:",
+        "question": "StackStack hakkında sorularınız için:",
         "link": {
-            "homepage": "JHipster ana sayfa",
-            "stackoverflow": "Stack Overflow'da JHipster",
-            "bugtracker": "JHipster hata yönetimi",
-            "chat": "JHipster genel sohbet odası",
+            "homepage": "StackStack ana sayfa",
+            "stackoverflow": "Stack Overflow'da StackStack",
+            "bugtracker": "StackStack hata yönetimi",
+            "chat": "StackStack genel sohbet odası",
             "follow": "Twitter'da @java_hipster adresinden ulaşabilirsiniz"
         },
-        "like": "JHipster'ı beğendiysenizi yıldız vermeyi unutmayın",
+        "like": "StackStack'ı beğendiysenizi yıldız vermeyi unutmayın",
         "github": "GitHub"
     }
 }

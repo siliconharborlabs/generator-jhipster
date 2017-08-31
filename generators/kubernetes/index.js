@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +47,7 @@ module.exports = KubernetesGenerator.extend({
 
     initializing: {
         sayHello() {
-            this.log(chalk.white(`${chalk.bold('⎈')} Welcome to the JHipster Kubernetes Generator ${chalk.bold('⎈')}`));
+            this.log(chalk.white(`${chalk.bold('⎈')} Welcome to the StackStack Kubernetes Generator ${chalk.bold('⎈')}`));
             this.log(chalk.white(`Files will be generated in folder: ${chalk.yellow(this.destinationRoot())}`));
         },
 

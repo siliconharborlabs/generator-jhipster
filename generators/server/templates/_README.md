@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,15 +29,15 @@ if (clientPackageManager === 'yarn') {
     clientPackageMngrAddDev = 'add --dev --exact';
 }
 _%>
-This application was generated using JHipster <%= jhipsterVersion %>, you can find documentation and help at [<%= DOCUMENTATION_ARCHIVE_URL %>](<%= DOCUMENTATION_ARCHIVE_URL %>).
+This application was generated using StackStack <%= jhipsterVersion %>, you can find documentation and help at [<%= DOCUMENTATION_ARCHIVE_URL %>](<%= DOCUMENTATION_ARCHIVE_URL %>).
 <%_ if (applicationType === 'gateway' || applicationType === 'microservice' || applicationType === 'uaa') { _%>
 
-This is a "<%= applicationType %>" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
+This is a "<%= applicationType %>" application intended to be part of a microservice architecture, please refer to the [Doing microservices with StackStack][] page of the documentation for more information.
 <% if (applicationType === 'uaa') { %>
-This is also a JHipster User Account and Authentication (UAA) Server, refer to [Using UAA for Microservice Security][] for details on how to secure JHipster microservices with OAuth2.<% } %>
+This is also a StackStack User Account and Authentication (UAA) Server, refer to [Using UAA for Microservice Security][] for details on how to secure StackStack microservices with OAuth2.<% } %>
 <%_ } _%>
 <%_ if (applicationType === 'gateway' || applicationType === 'microservice' || applicationType === 'uaa') { _%>
-This application is configured for Service Discovery and Configuration with <% if (serviceDiscoveryType === 'eureka') { %>the JHipster-Registry<% } %><% if (serviceDiscoveryType === 'consul') { %>Consul<% } %>. On launch, it will refuse to start if it is not able to connect to <% if (serviceDiscoveryType === 'eureka') { %>the JHipster-Registry at [http://localhost:8761](http://localhost:8761)<% } %><% if (serviceDiscoveryType === 'consul') { %>Consul at [http://localhost:8500](http://localhost:8500)<% } %>.<% if (serviceDiscoveryType === 'eureka') { %> For more information, read our documentation on [Service Discovery and Configuration with the JHipster-Registry][].<% } %><% if (serviceDiscoveryType === 'consul') { %> For more information, read our documentation on [Service Discovery and Configuration with Consul][].<% } %>
+This application is configured for Service Discovery and Configuration with <% if (serviceDiscoveryType === 'eureka') { %>the StackStack-Registry<% } %><% if (serviceDiscoveryType === 'consul') { %>Consul<% } %>. On launch, it will refuse to start if it is not able to connect to <% if (serviceDiscoveryType === 'eureka') { %>the StackStack-Registry at [http://localhost:8761](http://localhost:8761)<% } %><% if (serviceDiscoveryType === 'consul') { %>Consul at [http://localhost:8500](http://localhost:8500)<% } %>.<% if (serviceDiscoveryType === 'eureka') { %> For more information, read our documentation on [Service Discovery and Configuration with the StackStack-Registry][].<% } %><% if (serviceDiscoveryType === 'consul') { %> For more information, read our documentation on [Service Discovery and Configuration with Consul][].<% } %>
 <%_ } _%>
 
 ## Development
@@ -145,7 +145,7 @@ Add the `-h` flag on any command to see how you can use it. For example, `bower 
 <%_ } _%>
 <%_ } _%>
 
-For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
+For further instructions on how to develop with StackStack, have a look at [Using StackStack in development][].
 
 <%_ if (clientFramework !== 'angular1') { _%>
 ### Using angular-cli
@@ -201,7 +201,7 @@ To ensure everything worked, run:
 
 <% if(!skipClient) { %>Then navigate to [http://localhost:<%= serverPort %>](http://localhost:<%= serverPort %>) in your browser.
 <% } %>
-Refer to [Using JHipster in production][] for more details.
+Refer to [Using StackStack in production][] for more details.
 
 ## Testing
 
@@ -231,7 +231,7 @@ For more information, refer to the [Running tests page][].
 
 ## Using Docker to simplify development (optional)
 
-You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
+You can use Docker to improve your StackStack development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 For example, to start a <%= prodDatabaseType%> database in a docker container, run:
 
     docker-compose -f src/main/docker/<%= prodDatabaseType%>.yml up -d
@@ -249,25 +249,25 @@ Then run:
 
     docker-compose -f src/main/docker/app.yml up -d
 
-For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`jhipster docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
+For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`jhipster docker-compose`), which is able to generate docker configurations for one or several StackStack applications.
 
 ## Continuous Integration (optional)
 
 To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
 
-[JHipster Homepage and latest documentation]: <%= DOCUMENTATION_URL %>
-[JHipster <%= jhipsterVersion %> archive]: <%= DOCUMENTATION_ARCHIVE_URL %>
-<% if (applicationType === 'gateway' || applicationType === 'microservice' || applicationType === 'uaa') { %>[Doing microservices with JHipster]: <%= DOCUMENTATION_ARCHIVE_URL %>/microservices-architecture/<% } %>
+[StackStack Homepage and latest documentation]: <%= DOCUMENTATION_URL %>
+[StackStack <%= jhipsterVersion %> archive]: <%= DOCUMENTATION_ARCHIVE_URL %>
+<% if (applicationType === 'gateway' || applicationType === 'microservice' || applicationType === 'uaa') { %>[Doing microservices with StackStack]: <%= DOCUMENTATION_ARCHIVE_URL %>/microservices-architecture/<% } %>
 <%_ if (applicationType === 'uaa') { _%>[Using UAA for Microservice Security]: <%= DOCUMENTATION_ARCHIVE_URL %>/using-uaa/<%_ } _%>
-[Using JHipster in development]: <%= DOCUMENTATION_ARCHIVE_URL %>/development/
+[Using StackStack in development]: <%= DOCUMENTATION_ARCHIVE_URL %>/development/
 <%_ if (serviceDiscoveryType === 'eureka') { _%>
-[Service Discovery and Configuration with the JHipster-Registry]: <%= DOCUMENTATION_ARCHIVE_URL %>/microservices-architecture/#jhipster-registry
+[Service Discovery and Configuration with the StackStack-Registry]: <%= DOCUMENTATION_ARCHIVE_URL %>/microservices-architecture/#jhipster-registry
 <%_ } _%>
 <%_ if (serviceDiscoveryType === 'consul') { _%>
 [Service Discovery and Configuration with Consul]: <%= DOCUMENTATION_ARCHIVE_URL %>/microservices-architecture/#consul
 <%_ } _%>
 [Using Docker and Docker-Compose]: <%= DOCUMENTATION_ARCHIVE_URL %>/docker-compose
-[Using JHipster in production]: <%= DOCUMENTATION_ARCHIVE_URL %>/production/
+[Using StackStack in production]: <%= DOCUMENTATION_ARCHIVE_URL %>/production/
 [Running tests page]: <%= DOCUMENTATION_ARCHIVE_URL %>/running-tests/
 [Setting up Continuous Integration]: <%= DOCUMENTATION_ARCHIVE_URL %>/setting-up-ci/
 
