@@ -1,5 +1,5 @@
 Description:
-    Creates a new JHipster service: this is a simple transactional Spring service bean.
+    Creates a new StackStack service: this is a simple transactional Spring service bean.
 
 Example:
     jhipster service Foo

@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +35,7 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
         proxy: [{
             context: [<% if (authenticationType === 'uaa') { %>
                 '/<%= uaaBaseName.toLowerCase() %>',<% } %>
-                /* jhipster-needle-add-entity-to-webpack - JHipster will add entity api paths here */
+                /* jhipster-needle-add-entity-to-webpack - StackStack will add entity api paths here */
                 '/api',
                 '/management',
                 '/swagger-resources',
@@ -121,7 +121,7 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
             utils.root('src/test'),
         ]),
         new WebpackNotifierPlugin({
-            title: 'JHipster',
+            title: 'StackStack',
             contentImage: path.join(__dirname, 'logo-jhipster.png')
         })
     ]

@@ -5,15 +5,15 @@
         "logged": {
             "message": "Olete sisse logitud kasutajana \"{{username}}\"."
         },
-        "question": "Kui teil on küsimusi JHipster kohta:",
+        "question": "Kui teil on küsimusi StackStack kohta:",
         "link": {
-            "homepage": "JHipster koduleht",
-            "stackoverflow": "JHipster Stack Overflow-s",
-            "bugtracker": "JHipster veahaldus",
-            "chat": "JHipster avalik jututuba",
+            "homepage": "StackStack koduleht",
+            "stackoverflow": "StackStack Stack Overflow-s",
+            "bugtracker": "StackStack veahaldus",
+            "chat": "StackStack avalik jututuba",
             "follow": "jälgi @java_hipster Twitteris"
         },
-        "like": "Kui teile meeldib JHipster, siis ärge unustage anda meile tähte",
+        "like": "Kui teile meeldib StackStack, siis ärge unustage anda meile tähte",
         "github": "GitHub-is"
     }
 }

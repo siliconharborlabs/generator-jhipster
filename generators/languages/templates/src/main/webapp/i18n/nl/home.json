@@ -5,15 +5,15 @@
         "logged": {
             "message": "U bent aangemeld als gebruiker \"{{username}}\"."
         },
-        "question": "Indien u vragen hebt over JHipster:",
+        "question": "Indien u vragen hebt over StackStack:",
         "link": {
-            "homepage": "JHipster startpagina",
-            "stackoverflow": "JHipster op Stack Overflow",
-            "bugtracker": "JHipster bug tracker",
-            "chat": "JHipster publieke chatruimte",
+            "homepage": "StackStack startpagina",
+            "stackoverflow": "StackStack op Stack Overflow",
+            "bugtracker": "StackStack bug tracker",
+            "chat": "StackStack publieke chatruimte",
             "follow": "contacteer @java_hipster op Twitter"
         },
-        "like": "Als u JHipster leuk vindt, vergeet dan niet om ons een ster te geven op",
+        "like": "Als u StackStack leuk vindt, vergeet dan niet om ons een ster te geven op",
         "github": "GitHub"
     }
 }

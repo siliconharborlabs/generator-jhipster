@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -211,7 +211,7 @@ server:
         min-response-size: 1024
 
 # ===================================================================
-# JHipster specific properties
+# StackStack specific properties
 #
 # Full reference is available at: http://www.jhipster.tech/common-application-properties/
 # ===================================================================
@@ -292,7 +292,7 @@ jhipster:
             # security key (this key should be unique for your application, and kept secret)
             key: <%= rememberMeKey %>
 <%_ } _%>
-    mail: # specific JHipster mail property, for standard properties see MailProperties
+    mail: # specific StackStack mail property, for standard properties see MailProperties
         from: <%= baseName %>@localhost
         base-url: http://my-server-url-to-change # Modify according to your server's URL
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration

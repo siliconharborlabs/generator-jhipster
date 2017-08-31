@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,4 +23,4 @@ import '../content/scss/vendor.scss';
 <%_} else { _%>
 import '../content/css/vendor.css';
 <%_ } _%>
-// jhipster-needle-add-element-to-vendor - JHipster will add new menu items here
+// jhipster-needle-add-element-to-vendor - StackStack will add new menu items here

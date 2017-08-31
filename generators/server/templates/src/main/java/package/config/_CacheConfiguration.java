@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -354,17 +354,17 @@ public class CacheConfiguration {
     /**
      * Inject a {@link org.infinispan.configuration.global.GlobalConfiguration GlobalConfiguration} for Infinispan cache.
      * <p>
-     * If the JHipster Registry is enabled, then the host list will be populated
+     * If the StackStack Registry is enabled, then the host list will be populated
      * from Eureka.
      *
      * <p>
-     * If the JHipster Registry is not enabled, host discovery will be based on
+     * If the StackStack Registry is not enabled, host discovery will be based on
      * the default transport settings defined in the 'config-file' packaged within
      * the Jar. The 'config-file' can be overridden using the application property
      * <i>jhipster.cache.inifnispan.config-file</i>
      *
      * <p>
-     * If the JHipster Registry is not defined, you have the choice of 'config-file'
+     * If the StackStack Registry is not defined, you have the choice of 'config-file'
      * based on the underlying platform for hosts discovery. Infinispan
      * supports discovery natively for most of the platforms like Kubernets/OpenShift,
      * AWS, Azure and Google.
@@ -536,7 +536,7 @@ public class CacheConfiguration {
 
         <%_ if(serviceDiscoveryType === 'eureka') { _%>
     /**
-     * TCP channel with the host details populated from the JHipster Registry.
+     * TCP channel with the host details populated from the StackStack Registry.
      * <p>
      * MPING multicast is replaced with TCPPING with the host details discovered
      * from registry and sends only unicast messages to the host list.

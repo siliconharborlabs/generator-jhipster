@@ -5,15 +5,15 @@
         "logged": {
             "message": "قمت بتسجيل الدخول كمستخدم \"{{username}}\"."
         },
-        "question": "إذا كان لديك أي سؤال حول JHipster:",
+        "question": "إذا كان لديك أي سؤال حول StackStack:",
         "link": {
-            "homepage": "JHipster homepage",
-            "stackoverflow": "JHipster on Stack Overflow",
-            "bugtracker": "JHipster bug tracker",
-            "chat": "JHipster public chat room",
+            "homepage": "StackStack homepage",
+            "stackoverflow": "StackStack on Stack Overflow",
+            "bugtracker": "StackStack bug tracker",
+            "chat": "StackStack public chat room",
             "follow": "follow @java_hipster on Twitter"
         },
-        "like": "إذا كنت تحب JHipster، لا تنسى أن تعطي لنا نجم على",
+        "like": "إذا كنت تحب StackStack، لا تنسى أن تعطي لنا نجم على",
         "github": "GitHub"
     }
 }

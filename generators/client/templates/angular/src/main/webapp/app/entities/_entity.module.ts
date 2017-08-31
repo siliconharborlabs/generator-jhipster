@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,11 +18,11 @@
 -%>
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-/* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
+/* jhipster-needle-add-entity-module-import - StackStack will add entity modules imports here */
 
 @NgModule({
     imports: [
-        /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
+        /* jhipster-needle-add-entity-module - StackStack will add entity modules here */
     ],
     declarations: [],
     entryComponents: [],

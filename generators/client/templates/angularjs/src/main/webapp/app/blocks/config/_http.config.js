@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +35,7 @@
         $httpProvider.interceptors.push('authExpiredInterceptor');<% if (authenticationType === 'oauth2' || authenticationType === 'jwt' || authenticationType === 'uaa') { %>
         $httpProvider.interceptors.push('authInterceptor');<% } %>
         $httpProvider.interceptors.push('notificationInterceptor');
-        // jhipster-needle-angularjs-add-interceptor JHipster will add new application http interceptor here
+        // jhipster-needle-angularjs-add-interceptor StackStack will add new application http interceptor here
 
         $urlMatcherFactoryProvider.type('boolean', {
             name : 'boolean',
