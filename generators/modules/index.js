@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,12 +35,12 @@ module.exports = ModulesGenerator.extend({
         const jhipsterVar = this.options.jhipsterVar;
         const jhipsterFunc = this.options.jhipsterFunc;
         if (jhipsterVar === undefined || jhipsterVar.moduleName === undefined) {
-            this.error(chalk.red('This sub-generator must be used by JHipster modules, and the module name is not defined.'));
+            this.error(chalk.red('This sub-generator must be used by StackStack modules, and the module name is not defined.'));
         }
 
-        this.log(`Composing JHipster configuration with module ${chalk.red(jhipsterVar.moduleName)}`);
+        this.log(`Composing StackStack configuration with module ${chalk.red(jhipsterVar.moduleName)}`);
 
-        this.warning(`${chalk.red('DEPRECATED!')} The JHipster module sub-generator is deprecated.`);
+        this.warning(`${chalk.red('DEPRECATED!')} The StackStack module sub-generator is deprecated.`);
         this.warning(`Please import the ${chalk.yellow('generator-base.js')} using commonJS require or ES2015 import.`);
         this.warning(`See ${chalk.yellow('http://www.jhipster.tech/modules/creating-a-module')} for more details.\n`);
 
@@ -49,10 +49,10 @@ module.exports = ModulesGenerator.extend({
         const packageFolder = this.config.get('packageFolder');
 
         if (!this.options.skipValidation && (baseName === undefined || packageName === undefined)) {
-            this.log(chalk.red('ERROR! There is no existing JHipster configuration file in this directory.'));
-            this.error(`JHipster ${jhipsterVar.moduleName} is a JHipster module, and needs a .yo-rc.json configuration file made by JHipster.`);
+            this.log(chalk.red('ERROR! There is no existing StackStack configuration file in this directory.'));
+            this.error(`StackStack ${jhipsterVar.moduleName} is a StackStack module, and needs a .yo-rc.json configuration file made by StackStack.`);
         }
-        // add required JHipster constiables
+        // add required StackStack constiables
         jhipsterVar.baseName = this.baseName = baseName;
         jhipsterVar.packageName = packageName;
         jhipsterVar.packageFolder = packageFolder;
@@ -175,6 +175,6 @@ module.exports = ModulesGenerator.extend({
         const insight = this.insight();
         insight.trackWithEvent('generator', 'modules');
 
-        this.log('Reading the JHipster project configuration for your module');
+        this.log('Reading the StackStack project configuration for your module');
     }
 });

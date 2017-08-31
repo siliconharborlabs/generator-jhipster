@@ -1,5 +1,5 @@
 Description:
-    Creates a new JHipster server side application based on the selected options
+    Creates a new StackStack server side application based on the selected options
 
 Example:
     jhipster server

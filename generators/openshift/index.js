@@ -29,7 +29,7 @@ module.exports = OpenShiftGenerator.extend({
 
     initializing: {
         sayHello() {
-            this.log(chalk.white(`${chalk.bold('⭕')} [*BETA*] Welcome to the JHipster OpenShift Generator ${chalk.bold('⭕')}`));
+            this.log(chalk.white(`${chalk.bold('⭕')} [*BETA*] Welcome to the StackStack OpenShift Generator ${chalk.bold('⭕')}`));
             this.log(chalk.white(`Files will be generated in folder: ${chalk.yellow(this.destinationRoot())} or in the root directory path that you select in the subsequent step`));
         },
 

@@ -12,7 +12,7 @@ const AwsFactory = module.exports = function AwsFactory(generatorRef, cb) {
         Aws = require('aws-sdk'); // eslint-disable-line
         cb();
     } catch (e) {
-        generator.log('Installing AWS dependencies into your JHipster folder');
+        generator.log('Installing AWS dependencies into your StackStack folder');
         let installCommand = 'yarn add aws-sdk progress uuid --modules-folder node_modules/generator-jhipster/node_modules';
         if (generator.config.get('clientPackageManager') === 'npm') {
             installCommand = 'npm install aws-sdk progress uuid --prefix node_modules/generator-jhipster';

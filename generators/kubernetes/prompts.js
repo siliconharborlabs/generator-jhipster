@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -83,7 +83,7 @@ function askForJhipsterConsole() {
     const prompts = [{
         type: 'confirm',
         name: 'jhipsterConsole',
-        message: 'Do you want to use JHipster Console for log aggregation (ELK)?',
+        message: 'Do you want to use StackStack Console for log aggregation (ELK)?',
         default: this.jhipsterConsole ? this.jhipsterConsole : true
     }];
 

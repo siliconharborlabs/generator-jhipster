@@ -1,5 +1,5 @@
 Description:
-    Creates a new JHipster client side application based on the selected options
+    Creates a new StackStack client side application based on the selected options
 
 Example:
     jhipster client

@@ -1,4 +1,4 @@
-# JHipster generated kubernetes configuration
+# StackStack generated kubernetes configuration
 
 ## Preparation
 
@@ -73,9 +73,9 @@ Using livenessProbes and readinessProbe allows you to tell kubernetes about the 
 ## Monitoring tools
 
 <%_ if (jhipsterConsole) { _%>
-### JHipster console
+### StackStack console
 
-Your application logs can be found in JHipster console (powered by Kibana). You can find its service details by
+Your application logs can be found in StackStack console (powered by Kibana). You can find its service details by
 ```
 $ kubectl get svc jhipster-console<%= kubernetesNamespace === 'default' ? '' : ` -n ${kubernetesNamespace}` %>
 ```
@@ -103,7 +103,7 @@ $ kubectl get svc prometheus-<%= kubernetesNamespace %><%= kubernetesNamespace =
 <%_ } _%>
 
 <%_ if (app.serviceDiscoveryType === 'eureka') { _%>
-## JHipster registry
+## StackStack registry
 
 The registry is deployed using a headless service in kubernetes, so the primary service has no IP address, and cannot get a node port. You can create a secondary service for any type, using:
 
@@ -117,7 +117,7 @@ and explore the details using
 $ kubectl get svc exposed-registry<%= kubernetesNamespace === 'default' ? '' : ` -n ${kubernetesNamespace}` %>
 ```
 
-For scaling the JHipster registry, use
+For scaling the StackStack registry, use
 
 ```
 $ kubectl scale statefulset jhipster-registry --replicas 3<%= kubernetesNamespace === 'default' ? '' : ` -n ${kubernetesNamespace}` %>

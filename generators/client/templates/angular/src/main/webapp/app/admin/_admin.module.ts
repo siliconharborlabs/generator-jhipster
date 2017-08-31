@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import { <%=jhiPrefixCapitalized%>TrackerService } from './../shared/tracker/tra
 <%_ } _%>
 
 import { <%=angularXAppName%>SharedModule } from '../shared';
-/* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
+/* jhipster-needle-add-admin-module-import - StackStack will add admin modules imports here */
 
 import {
     adminState,
@@ -70,7 +70,7 @@ import {
     imports: [
         <%=angularXAppName%>SharedModule,
         RouterModule.forRoot(adminState, { useHash: true }),
-        /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
+        /* jhipster-needle-add-admin-module - StackStack will add admin modules here */
     ],
     declarations: [
         <%_ if (devDatabaseType !== 'cassandra') { _%>

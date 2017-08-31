@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -68,7 +68,7 @@ function askForServerSideOpts(meta) {
             type: 'list',
             name: 'serviceDiscoveryType',
             message: response => this.getNumberedQuestion(
-                'Do you want to use the JHipster Registry to configure, monitor and scale your microservices and gateways?',
+                'Do you want to use the StackStack Registry to configure, monitor and scale your microservices and gateways?',
                 applicationType === 'gateway' || applicationType === 'microservice' || applicationType === 'uaa'
             ),
             choices: [
@@ -92,7 +92,7 @@ function askForServerSideOpts(meta) {
             type: 'list',
             name: 'serviceDiscoveryType',
             message: response => this.getNumberedQuestion(
-                'Do you want to use the JHipster Registry to configure, monitor and scale your application?',
+                'Do you want to use the StackStack Registry to configure, monitor and scale your application?',
                 applicationType === 'monolith'
             ),
             choices: [
@@ -143,7 +143,7 @@ function askForServerSideOpts(meta) {
                 },
                 {
                     value: 'uaa',
-                    name: '[BETA] Authentication with JHipster UAA server (the server must be generated separately)'
+                    name: '[BETA] Authentication with StackStack UAA server (the server must be generated separately)'
                 }
             ],
             default: 0
@@ -163,7 +163,7 @@ function askForServerSideOpts(meta) {
                 if (uaaAppData && uaaAppData.baseName && uaaAppData.applicationType === 'uaa') {
                     return true;
                 }
-                return `Could not find a valid JHipster UAA server in path "${input}"`;
+                return `Could not find a valid StackStack UAA server in path "${input}"`;
             }
         },
         {
@@ -412,7 +412,7 @@ function askForServerSideOpts(meta) {
         this.serviceDiscoveryType = props.serviceDiscoveryType;
         this.authenticationType = props.authenticationType;
 
-        // JWT authentication is mandatory with Eureka, so the JHipster Registry
+        // JWT authentication is mandatory with Eureka, so the StackStack Registry
         // can control the applications
         if (this.serviceDiscoveryType === 'eureka' && this.authenticationType !== 'uaa') {
             this.authenticationType = 'jwt';

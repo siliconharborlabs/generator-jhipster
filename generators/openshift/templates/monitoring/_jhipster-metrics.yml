@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,10 +36,10 @@ metadata:
     prometheus for metrics aggregation, and grafana for visualization .<% if(storageType =='persistent') { %>The database is stored on persistent storage, so any restart of the service will not cause any impact to the data.
      Please make sure you have provisioned PVs (Persistent Volumes) before using this template. <% } %><% if (storageType === 'ephemeral') {
      %>The database is not stored on persistent storage, so any restart of the service will result in all data being lost.<% } %>"
-    openshift.io/provider-display-name: JHipster-OpenShift
+    openshift.io/provider-display-name: StackStack-OpenShift
 labels:
   app: jhipster-metrics
-  createdBy: JHipster-Team
+  createdBy: StackStack-Team
 parameters:
   -
     name: PT_APP_NAME
@@ -115,7 +115,7 @@ objects:
     #common configuration shared between all applications
     data:
       prometheus.conf: |-
-        # Sample global config for monitoring JHipster applications
+        # Sample global config for monitoring StackStack applications
         global:
           scrape_interval:     15s # By default, scrape targets every 15 seconds.
           evaluation_interval: 15s # By default, scrape targets every 15 seconds.

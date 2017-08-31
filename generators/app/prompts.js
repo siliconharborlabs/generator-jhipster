@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ function askForInsightOptIn() {
         when: () => insight.optOut === undefined,
         type: 'confirm',
         name: 'insight',
-        message: `May ${chalk.cyan('JHipster')} anonymously report usage statistics to improve the tool over time?`,
+        message: `May ${chalk.cyan('StackStack')} anonymously report usage statistics to improve the tool over time?`,
         default: true
     }).then((prompt) => {
         if (prompt.insight !== undefined) {
@@ -70,7 +70,7 @@ function askForApplicationType(meta) {
             },
             {
                 value: 'uaa',
-                name: '[BETA] JHipster UAA server (for microservice OAuth2 authentication)'
+                name: '[BETA] StackStack UAA server (for microservice OAuth2 authentication)'
             }
         ],
         default: DEFAULT_APPTYPE
@@ -149,7 +149,7 @@ function askForMoreModules() {
     this.prompt({
         type: 'confirm',
         name: 'installModules',
-        message: response => this.getNumberedQuestion('Would you like to install other generators from the JHipster Marketplace?', true),
+        message: response => this.getNumberedQuestion('Would you like to install other generators from the StackStack Marketplace?', true),
         default: false
     }).then((prompt) => {
         if (prompt.installModules) {

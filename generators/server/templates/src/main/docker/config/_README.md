@@ -1,7 +1,7 @@
 <%#
- Copyright 2013-2017 the original author or authors from the JHipster project.
+ Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the JHipster project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
 # Central configuration sources details
 
 <%_ if (serviceDiscoveryType === 'eureka') { _%>
-The JHipster-Registry will use the following directories as its configuration source :
+The StackStack-Registry will use the following directories as its configuration source :
 - localhost-config : when running the registry in docker with the jhipster-registry.yml docker-compose file
 - docker-config : when running the registry and the app both in docker with the app.yml docker-compose file
 <%_ } _%>
