@@ -56,6 +56,7 @@ function writeFiles() {
         writeDockerFiles() {
             // Create Docker and Docker Compose files
             this.template(`${DOCKER_DIR}_Dockerfile`, `${DOCKER_DIR}Dockerfile`);
+            this.template(`${DOCKER_DIR}.dockerignore`, `${DOCKER_DIR}.dockerignore`);
             this.template(`${DOCKER_DIR}_app.yml`, `${DOCKER_DIR}app.yml`);
             if (this.prodDatabaseType === 'mysql') {
                 this.template(`${DOCKER_DIR}_mysql.yml`, `${DOCKER_DIR}mysql.yml`);
@@ -110,6 +111,9 @@ function writeFiles() {
                 }
             }
 
+            if (this.enableSwaggerCodegen) {
+                this.template(`${DOCKER_DIR}_swagger-editor.yml`, `${DOCKER_DIR}swagger-editor.yml`);
+            }
 
             this.template(`${DOCKER_DIR}_sonar.yml`, `${DOCKER_DIR}sonar.yml`);
         },
@@ -412,10 +416,8 @@ function writeFiles() {
             // error handler code - server side
             this.template(`${SERVER_MAIN_SRC_DIR}package/web/rest/errors/_ErrorConstants.java`, `${javaDir}web/rest/errors/ErrorConstants.java`);
             this.template(`${SERVER_MAIN_SRC_DIR}package/web/rest/errors/_CustomParameterizedException.java`, `${javaDir}web/rest/errors/CustomParameterizedException.java`);
-            this.template(`${SERVER_MAIN_SRC_DIR}package/web/rest/errors/_ErrorVM.java`, `${javaDir}web/rest/errors/ErrorVM.java`);
             this.template(`${SERVER_MAIN_SRC_DIR}package/web/rest/errors/_ExceptionTranslator.java`, `${javaDir}web/rest/errors/ExceptionTranslator.java`);
             this.template(`${SERVER_MAIN_SRC_DIR}package/web/rest/errors/_FieldErrorVM.java`, `${javaDir}web/rest/errors/FieldErrorVM.java`);
-            this.template(`${SERVER_MAIN_SRC_DIR}package/web/rest/errors/_ParameterizedErrorVM.java`, `${javaDir}web/rest/errors/ParameterizedErrorVM.java`);
         },
 
         writeServerJavaWebFiles() {
