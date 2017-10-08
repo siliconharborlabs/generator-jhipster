@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://stackstack.io/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ const minimumNodeVersion = packageJson.engines.node;
 if (!semver.satisfies(currentNodeVersion, minimumNodeVersion)) {
     /* eslint-disable no-console */
     logger.error(`You are running Node version ${currentNodeVersion
-    }\nJHipster requires Node version ${minimumNodeVersion
+    }\nStackStack requires Node version ${minimumNodeVersion
     }\nPlease update your version of Node.`);
     /* eslint-enable  */
     process.exit(1);
@@ -56,7 +56,7 @@ function requireCLI(preferLocal) {
             if (__dirname !== path.dirname(localCLI)) {
                 // load local version
                 /* eslint-disable import/no-dynamic-require */
-                logger.info('Using JHipster version installed locally in current project\'s node_modules');
+                logger.info('Using StackStack version installed locally in current project\'s node_modules');
                 require(localCLI);
                 return;
             }
@@ -65,7 +65,7 @@ function requireCLI(preferLocal) {
         }
     }
     // load global version
-    logger.info('Using JHipster version installed globally');
+    logger.info('Using StackStack version installed globally');
     require('./cli');
     /* eslint-enable  */
 }

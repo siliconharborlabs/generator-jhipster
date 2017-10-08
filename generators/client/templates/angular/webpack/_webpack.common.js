@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://stackstack.io/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,10 +30,10 @@ module.exports = (options) => {
     const DATAS = {
         VERSION: `'${utils.parseVersion()}'`,
         DEBUG_INFO_ENABLED: options.env === 'development'<% if (authenticationType !== 'uaa') { %>,
-        // The root URL for API calls, ending with a '/' - for example: `"http://www.jhipster.tech:8081/myservice/"`.
+        // The root URL for API calls, ending with a '/' - for example: `"http://stackstack.io:8081/myservice/"`.
         // If this URL is left empty (""), then it will be relative to the current context.
-        // If you use an API server, in `prod` mode, you will need to enable CORS  
-        // (see the `jhipster.cors` common JHipster property in the `application-*.yml` configurations)
+        // If you use an API server, in `prod` mode, you will need to enable CORS
+        // (see the `jhipster.cors` common StackStack property in the `application-*.yml` configurations)
         SERVER_API_URL: `""`<% } %>
     };
     return {

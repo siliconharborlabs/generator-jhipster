@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://stackstack.io/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ public final class ErrorConstants {
 
     public static final String ERR_CONCURRENCY_FAILURE = "error.concurrencyFailure";
     public static final String ERR_VALIDATION = "error.validation";
-    public static final String PROBLEM_BASE_URL = "http://www.jhipster.tech/problem";
+    public static final String PROBLEM_BASE_URL = "http://stackstack.io/problem";
     public static final URI DEFAULT_TYPE = URI.create(PROBLEM_BASE_URL + "/problem-with-message");
     public static final URI CONSTRAINT_VIOLATION_TYPE = URI.create(PROBLEM_BASE_URL + "/contraint-violation");
     public static final URI PARAMETERIZED_TYPE = URI.create(PROBLEM_BASE_URL + "/parameterized");

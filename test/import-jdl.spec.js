@@ -17,7 +17,7 @@ const entityFiles = [
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/JobResourceIntTest.java`,
 ];
 
-describe('JHipster generator import jdl', () => {
+describe('StackStack generator import jdl', () => {
     describe('imports a JDL model from single file with --json-only flag', () => {
         beforeEach((done) => {
             helpers.run(require.resolve('../generators/import-jdl'))

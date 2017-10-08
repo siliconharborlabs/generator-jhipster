@@ -3,7 +3,7 @@
 
 const assert = require('assert');
 
-describe('JHipster generator', () => {
+describe('StackStack generator', () => {
     it('can be imported without blowing up', () => {
         const app = require('../generators/app'); // eslint-disable-line global-require
         assert(app !== undefined);

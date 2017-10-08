@@ -23,7 +23,7 @@ Additional builds on [hipster-labs/jhipster-travis-build](https://github.com/hip
 | microservices | [![Build Status][image-microservices]][travis-url]       | Builds for Microservices       |
 | react         | [![Build Status][image-react]][travis-url]               | Builds for React               |
 
-## Analysis of the sample JHipster project
+## Analysis of the sample StackStack project
 
 [![sonar-quality-gate][sonar-quality-gate]][sonar-url]
 [![sonar-coverage][sonar-coverage]][sonar-url]
@@ -31,7 +31,7 @@ Additional builds on [hipster-labs/jhipster-travis-build](https://github.com/hip
 [![sonar-vulnerabilities][sonar-vulnerabilities]][sonar-url]
 
 
-Full documentation and information is available on our website at [http://www.jhipster.tech/][jhipster-url]
+Full documentation and information is available on our website at [http://stackstack.io/][jhipster-url]
 
 Please read our [guidelines](/CONTRIBUTING.md#submitting-an-issue) before submitting an issue. If your issue is a bug, please use the bug template pre populated [here](https://github.com/jhipster/generator-jhipster/issues/new). For feature requests and queries you can use [this template][feature-template].
 
@@ -50,7 +50,7 @@ Please read our [guidelines](/CONTRIBUTING.md#submitting-an-issue) before submit
 [sonar-vulnerabilities]: https://sonarqube.com/api/badges/measure?key=io.github.jhipster.sample%3Ajhipster-sample-application&metric=vulnerabilities
 
 [jhipster-image]: https://raw.githubusercontent.com/jhipster/jhipster.github.io/master/images/logo/logo-jhipster2x.png
-[jhipster-url]: http://www.jhipster.tech/
+[jhipster-url]: http://stackstack.io/
 [npm-image]: https://badge.fury.io/js/generator-jhipster.svg
 [npm-url]: https://npmjs.org/package/generator-jhipster
 [travis-image]: https://travis-ci.org/jhipster/generator-jhipster.svg?branch=master

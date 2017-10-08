@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://stackstack.io/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,7 +44,7 @@ module.exports = class extends BaseGenerator {
     get initializing() {
         return {
             sayHello() {
-                this.log(chalk.white(`${chalk.bold('🐮')} [BETA] Welcome to the JHipster Rancher Compose Generator ${chalk.bold('🐮')}`));
+                this.log(chalk.white(`${chalk.bold('🐮')} [BETA] Welcome to the StackStack Rancher Compose Generator ${chalk.bold('🐮')}`));
                 this.log(chalk.white(`Files will be generated in folder: ${chalk.yellow(this.destinationRoot())}`));
             },
 
@@ -160,7 +160,7 @@ module.exports = class extends BaseGenerator {
                     }
 
                     if (this.serviceDiscoveryType === 'eureka') {
-                        // Set the JHipster Registry password
+                        // Set the StackStack Registry password
                         yamlConfig.environment.push(`JHIPSTER_REGISTRY_PASSWORD=${this.adminPassword}`);
                     }
 

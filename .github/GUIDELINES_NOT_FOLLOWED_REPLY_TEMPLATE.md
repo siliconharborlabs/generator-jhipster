@@ -8,7 +8,7 @@ Tickets must follow our [Guidelines](https://github.com/jhipster/generator-jhips
 
 We have also created a template on the ["create a new ticket" page](https://github.com/jhipster/generator-jhipster/issues/new) to help you follow those guidelines.
 
-**If this is indeed a JHipster bug**, please open a new issue with proper details or update this issue with all details and request to reopen.
+**If this is indeed a StackStack bug**, please open a new issue with proper details or update this issue with all details and request to reopen.
 Issues opened without proper details will be closed without explanation.
 
 **If you have a question** please use Stack Overflow, and tag the question with [jhipster](http://stackoverflow.com/questions/tagged/jhipster). This helps the project to keep the issue tracker clean. Also, Stack Overflow will give your question a larger audience:

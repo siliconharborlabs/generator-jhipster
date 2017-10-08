@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://stackstack.io/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,12 +27,12 @@ module.exports = class extends BaseGenerator {
     get initializing() {
         return {
             sayHello() {
-                this.log(chalk.white('Welcome to the JHipster Information Sub-Generator\n'));
+                this.log(chalk.white('Welcome to the StackStack Information Sub-Generator\n'));
             },
 
             checkJHipster() {
                 const done = this.async();
-                console.log('##### **JHipster Version(s)**');
+                console.log('##### **StackStack Version(s)**');
                 shelljs.exec('npm list generator-jhipster', { silent: true }, (err, stdout, stderr) => {
                     if (stdout) {
                         console.log(`\n\`\`\`\n${stdout}\`\`\`\n`);
@@ -46,7 +46,7 @@ module.exports = class extends BaseGenerator {
                 let result = shelljs.cat('.yo-rc.json');
                 result = result.replace(/"rememberMeKey": ".*"/g, '"rememberMeKey": "replaced-by-jhipster-info"');
                 result = result.replace(/"jwtSecretKey": ".*"/g, '"jwtSecretKey": "replaced-by-jhipster-info"');
-                console.log('\n##### **JHipster configuration, a `.yo-rc.json` file generated in the root folder**\n');
+                console.log('\n##### **StackStack configuration, a `.yo-rc.json` file generated in the root folder**\n');
                 console.log(`\n<details>\n<summary>.yo-rc.json file</summary>\n<pre>\n${result}\n</pre>\n</details>\n`);
                 done();
             },

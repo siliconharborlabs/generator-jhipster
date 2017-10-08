@@ -21,7 +21,7 @@ entity Department {
 
 /**
  * Task entity.
- * @author The JHipster team.
+ * @author The StackStack team.
  */
 entity Task {
 	title String,

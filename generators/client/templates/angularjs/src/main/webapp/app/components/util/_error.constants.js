@@ -4,7 +4,7 @@
     angular
         .module('<%=angularAppName%>')
         .constant('errorConstants', (function() {
-            var problemBaseUrl = 'http://www.jhipster.tech/problem';
+            var problemBaseUrl = 'http://stackstack.io/problem';
             return {
                 EMAIL_ALREADY_USED_TYPE: problemBaseUrl + '/email-already-used',
                 LOGIN_ALREADY_USED_TYPE: problemBaseUrl + '/login-already-used',

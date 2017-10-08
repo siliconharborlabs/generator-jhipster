@@ -1,7 +1,7 @@
 /**
  * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the StackStack project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://stackstack.io/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports = class extends BaseGenerator {
 
         this.warning(`${chalk.red('DEPRECATED!')} The StackStack module sub-generator is deprecated.`);
         this.warning(`Please import the ${chalk.yellow('generator-base.js')} using commonJS require or ES2015 import.`);
-        this.warning(`See ${chalk.yellow('http://www.jhipster.tech/modules/creating-a-module')} for more details.\n`);
+        this.warning(`See ${chalk.yellow('http://stackstack.io/modules/creating-a-module')} for more details.\n`);
 
         const baseName = this.config.get('baseName');
         const packageName = this.config.get('packageName');

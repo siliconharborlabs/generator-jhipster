@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://stackstack.io/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -84,7 +84,7 @@ public class <%= mainClass %> {
      * <p>
      * Spring profiles can be configured with a program arguments --spring.profiles.active=your-active-profile
      * <p>
-     * You can find more information on how profiles work with StackStack on <a href="http://www.jhipster.tech/profiles/">http://www.jhipster.tech/profiles/</a>.
+     * You can find more information on how profiles work with StackStack on <a href="http://stackstack.io/profiles/">http://stackstack.io/profiles/</a>.
      */
     @PostConstruct
     public void initApplication() {

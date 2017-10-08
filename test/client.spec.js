@@ -8,7 +8,7 @@ const expectedFiles = require('./utils/expected-files');
 const angularJsfiles = require('../generators/client/files-angularjs').files;
 const angularfiles = require('../generators/client/files-angular').files;
 
-describe('JHipster client generator', () => {
+describe('StackStack client generator', () => {
     describe('generate client with angularjs 1', () => {
         beforeEach((done) => {
             helpers.run(path.join(__dirname, '../generators/client'))

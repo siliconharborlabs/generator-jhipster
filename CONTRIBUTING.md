@@ -1,6 +1,6 @@
-# Contributing to JHipster
+# Contributing to StackStack
 
-Are you ready to contribute to JHipster? We'd love to have you on board, and we will help you as much as we can. Here are the guidelines we'd like you to follow so that we can be of more help:
+Are you ready to contribute to StackStack? We'd love to have you on board, and we will help you as much as we can. Here are the guidelines we'd like you to follow so that we can be of more help:
 
  - [Questions and help](#question)
  - [Issues and Bugs](#issue)
@@ -11,12 +11,12 @@ Are you ready to contribute to JHipster? We'd love to have you on board, and we 
  - [Git Commit Guidelines](#commit)
 
 ## <a name="question"></a> Questions and help
-This is the JHipster bug tracker, and it is used for [Issues and Bugs](#issue) and for [Feature Requests](#feature). It is **not** a help desk or a support forum.
+This is the StackStack bug tracker, and it is used for [Issues and Bugs](#issue) and for [Feature Requests](#feature). It is **not** a help desk or a support forum.
 
-If you have a question on using JHipster, or if you need help with your JHipster project, please [read our help page](http://www.jhipster.tech/help/) and use the [JHipster tag on StackOverflow](http://stackoverflow.com/tags/jhipster) or join our [Gitter.im chat room](https://gitter.im/jhipster/generator-jhipster).
+If you have a question on using StackStack, or if you need help with your StackStack project, please [read our help page](http://stackstack.io/help/) and use the [StackStack tag on StackOverflow](http://stackoverflow.com/tags/jhipster) or join our [Gitter.im chat room](https://gitter.im/jhipster/generator-jhipster).
 
 ## <a name="issue"></a> Issues and Bugs
-If you find a bug in the source code or a mistake in the documentation, you can help us by [submitting a ticket](https://opensource.guide/how-to-contribute/#opening-an-issue) to our [GitHub issues](https://github.com/jhipster/generator-jhipster/issues). Even better, you can submit a Pull Request to our [JHipster generator project](https://github.com/jhipster/generator-jhipster) or to our [Documentation project](https://github.com/jhipster/jhipster.github.io).
+If you find a bug in the source code or a mistake in the documentation, you can help us by [submitting a ticket](https://opensource.guide/how-to-contribute/#opening-an-issue) to our [GitHub issues](https://github.com/jhipster/generator-jhipster/issues). Even better, you can submit a Pull Request to our [StackStack generator project](https://github.com/jhipster/generator-jhipster) or to our [Documentation project](https://github.com/jhipster/jhipster.github.io).
 
 **Please see the Submission Guidelines below**.
 
@@ -24,7 +24,7 @@ If you find a bug in the source code or a mistake in the documentation, you can 
 You can request a new feature by submitting a ticket to our [GitHub issues](https://github.com/jhipster/generator-jhipster/issues). If you
 would like to implement a new feature then consider what kind of change it is:
 
-* **Major Changes** that you wish to contribute to the project should be discussed first. Please open a ticket which clearly states that it is a feature request in the title and explain clearly what you want to achieve in the description, and the JHipster team will discuss with you what should be done in that ticket. You can then start working on a Pull Request.
+* **Major Changes** that you wish to contribute to the project should be discussed first. Please open a ticket which clearly states that it is a feature request in the title and explain clearly what you want to achieve in the description, and the StackStack team will discuss with you what should be done in that ticket. You can then start working on a Pull Request.
 * **Small Changes** can be proposed without any discussion. Open up a ticket which clearly states that it is a feature request in the title. Explain your change in the description, and you can propose a Pull Request straight away.
 
 ## <a name="submit"></a> Submission Guidelines
@@ -44,8 +44,8 @@ chances of your issue being dealt with quickly:
 * **Related issues** - has a similar issue been reported before?
 * **Suggest a Fix** - if you can't fix the bug yourself, perhaps you can point to what might be
   causing the problem (line of code or commit)
-* **JHipster Version(s)** - is it a regression?
-* **JHipster configuration, a `.yo-rc.json` file generated in the root folder** - this will help us to replicate the scenario, you can remove the rememberMe key.
+* **StackStack Version(s)** - is it a regression?
+* **StackStack configuration, a `.yo-rc.json` file generated in the root folder** - this will help us to replicate the scenario, you can remove the rememberMe key.
 * **Entity configuration(s) `entityName.json` files generated in the `.jhipster` directory** - if the error is during an entity creation or associated with a specific entity
 * **Browsers and Operating System** - is this a problem with all browsers or only IE8?
 
@@ -62,7 +62,7 @@ Before you submit your pull request consider the following guidelines:
 
 * Search [GitHub](https://github.com/jhipster/generator-jhipster/pulls?utf8=%E2%9C%93&q=is%3Apr) for an open or closed Pull Request
   that relates to your submission.
-* If you want to modify the JHipster generator, read our [Generator development setup](#setup)
+* If you want to modify the StackStack generator, read our [Generator development setup](#setup)
 * Make your changes in a new git branch
 
      ```shell
@@ -71,7 +71,7 @@ Before you submit your pull request consider the following guidelines:
 
 * Create your patch, **including appropriate test cases**.
 * Follow our [Coding Rules](#rules).
-* Generate a new JHipster project, and ensure that all tests pass
+* Generate a new StackStack project, and ensure that all tests pass
 
      ```shell
      mvn package -Pprod
@@ -102,7 +102,7 @@ Before you submit your pull request consider the following guidelines:
 * In GitHub, send a pull request to `jhipster/generator-jhipster:master`.
 * If we suggest changes then
   * Make the required updates.
-  * Re-run the JHipster tests on your sample generated project to ensure tests are still passing.
+  * Re-run the StackStack tests on your sample generated project to ensure tests are still passing.
   * Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
     ```shell
@@ -136,7 +136,7 @@ Sometimes your PR will have merge conflicts with the upstream repository's maste
     ```
 
 * The rebase will continue up to the next conflict. Repeat the previous step until all files are merged and the rebase ends successfully.
-* Re-run the JHipster tests on your sample generated project to ensure tests are still passing.
+* Re-run the StackStack tests on your sample generated project to ensure tests are still passing.
 * Force push to your GitHub repository (this will update your Pull Request)
 
     ```shell
@@ -173,7 +173,7 @@ from the main (upstream) repository:
     ```
 
 ## <a name="setup"></a> Generator development setup
-JHipster is a [Yeoman Generator](http://yeoman.io/), so you must follow the [Yeoman authoring documentation](http://yeoman.io/authoring/) in order to be able to run and test your changes.
+StackStack is a [Yeoman Generator](http://yeoman.io/), so you must follow the [Yeoman authoring documentation](http://yeoman.io/authoring/) in order to be able to run and test your changes.
 
 Here are the most important steps.
 
@@ -187,18 +187,18 @@ Go to the [generator-jhipster project](https://github.com/jhipster/generator-jhi
 
 In your cloned `generator-jhipster` project, type `npm link` or `yarn link` depending on the package manager you use.
 
-This will do a symbolic link from the global `node_modules` version to point to this folder, so when we run `jhipster`, you will now use the development version of JHipster.
+This will do a symbolic link from the global `node_modules` version to point to this folder, so when we run `jhipster`, you will now use the development version of StackStack.
 
-For testing, you will want to generate an application, and there is a specific issue here: for each application, JHipster installs a local version of itself. This is made to enable several applications to each use a specific JHipster version (application A uses JHipster 3.1.0, and application B uses JHipster 3.2.0).
+For testing, you will want to generate an application, and there is a specific issue here: for each application, StackStack installs a local version of itself. This is made to enable several applications to each use a specific StackStack version (application A uses StackStack 3.1.0, and application B uses StackStack 3.2.0).
 
-To overcome this you need to run `npm link generator-jhipster` or `yarn link generator-jhipster` on the generated project folder as well, so that the local version has a symbolic link to the development version of JHipster.
+To overcome this you need to run `npm link generator-jhipster` or `yarn link generator-jhipster` on the generated project folder as well, so that the local version has a symbolic link to the development version of StackStack.
 
 To put it in a nutshell, you need to:
 
 1. run `npm link` or `yarn link` on the `generator-jhipster` project
 2. run `npm link generator-jhipster` or `yarn link generator-jhipster` on the generated application folder (you need to do this for each application you create)
 
-Now, running the 'jhipster' command should use your specific JHipster version. You can test it by making a small change in your cloned generator, and running again on an existing JHipster project:
+Now, running the 'jhipster' command should use your specific StackStack version. You can test it by making a small change in your cloned generator, and running again on an existing StackStack project:
 
 ```shell
 jhipster
@@ -208,7 +208,7 @@ You should see your changes reflected in the generated project.
 
 ### Use a text editor
 
-As modifying the JHipster generator includes modifying Java and JavaScript templates, most IDE will not work correctly. We recommend you use a text editor like [Atom](https://atom.io/) or [VSCode](https://code.visualstudio.com/) to code your changes.
+As modifying the StackStack generator includes modifying Java and JavaScript templates, most IDE will not work correctly. We recommend you use a text editor like [Atom](https://atom.io/) or [VSCode](https://code.visualstudio.com/) to code your changes.
 
 ## Local Travis Build
 
@@ -230,8 +230,8 @@ Command name can be as below
 To ensure consistency throughout the source code, keep these rules in mind as you are working:
 
 * All features or bug fixes **must be tested** by one or more tests.
-* All files must follow the [.editorconfig file](http://editorconfig.org/) located at the root of the JHipster generator project. Please note that generated projects use the same `.editorconfig` file, so that both the generator and the generated projects share the same configuration.
-* Java files **must be** formatted using [Intellij IDEA's code style](http://confluence.jetbrains.com/display/IntelliJIDEA/Code+Style+and+Formatting). Please note that JHipster committers have a free Intellij IDEA Ultimate Edition for developing the project.
+* All files must follow the [.editorconfig file](http://editorconfig.org/) located at the root of the StackStack generator project. Please note that generated projects use the same `.editorconfig` file, so that both the generator and the generated projects share the same configuration.
+* Java files **must be** formatted using [Intellij IDEA's code style](http://confluence.jetbrains.com/display/IntelliJIDEA/Code+Style+and+Formatting). Please note that StackStack committers have a free Intellij IDEA Ultimate Edition for developing the project.
 * Generators JavaScript files **must follow** the eslint configuration defined at the project root, which is based on [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
 * Web apps JavaScript files **must follow** [Google's JavaScript Style Guide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml).
 * AngularJS files **must follow** [John Papa's Angular 1 style guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md).

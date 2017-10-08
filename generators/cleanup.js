@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://stackstack.io/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ module.exports = {
 };
 
 /**
- * Removes files that where generated in previous JHipster versions and therefore need to be removed
+ * Removes files that where generated in previous StackStack versions and therefore need to be removed
  *
  * @param {any} generator - reference to generator
  * @param {string} javaDir - Java Dir
@@ -43,7 +43,7 @@ function cleanupOldFiles(generator, javaDir, testDir) {
 }
 
 /**
- * Removes server files that where generated in previous JHipster versions and therefore need to be removed
+ * Removes server files that where generated in previous StackStack versions and therefore need to be removed
  *
  * @param {any} generator - reference to generator
  * @param {string} javaDir - Java Dir

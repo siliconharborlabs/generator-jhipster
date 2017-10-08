@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://stackstack.io/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,7 +42,7 @@ plugins {
      <%_ if (!skipClient) { _%>
     id "com.moowork.node" version "1.2.0"
     <%_ } _%>
-    //jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
+    //jhipster-needle-gradle-plugins - StackStack will add additional gradle plugins here
 }
 
 apply plugin: 'java'

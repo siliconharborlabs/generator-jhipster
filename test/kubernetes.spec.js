@@ -71,7 +71,7 @@ const expectedFiles = {
     ],
 };
 
-describe('JHipster Kubernetes Sub Generator', () => {
+describe('StackStack Kubernetes Sub Generator', () => {
     describe('only gateway', () => {
         beforeEach((done) => {
             helpers

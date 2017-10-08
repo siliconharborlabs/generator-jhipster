@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://stackstack.io/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -50,7 +50,7 @@ const SERVER_MAIN_RES_DIR = constants.SERVER_MAIN_RES_DIR;
  */
 module.exports = class extends PrivateBase {
     /**
-     * Get the JHipster configuration from the .yo-rc.json file.
+     * Get the StackStack configuration from the .yo-rc.json file.
      *
      * @param {string} namespace - namespace of the .yo-rc.json config file. By default: generator-jhipster
      */
@@ -431,14 +431,14 @@ module.exports = class extends PrivateBase {
     }
 
     /**
-     * get all the languages supported by JHipster
+     * get all the languages supported by StackStack
      */
     getAllSupportedLanguages() {
         return _.map(this.getAllSupportedLanguageOptions(), 'value');
     }
 
     /**
-     * check if a language is supported by JHipster
+     * check if a language is supported by StackStack
      * @param {string} language - Key for the language
      */
     isSupportedLanguage(language) {
@@ -458,7 +458,7 @@ module.exports = class extends PrivateBase {
     }
 
     /**
-     * get all the languages options supported by JHipster
+     * get all the languages options supported by StackStack
      */
     getAllSupportedLanguageOptions() {
         return constants.LANGUAGES;
@@ -650,7 +650,7 @@ module.exports = class extends PrivateBase {
                 ]
             }, this);
         } catch (e) {
-            this.log(chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow(' or missing required jhipster-needle. Reference to ') + moduleName + chalk.yellow(' not added to JHipster app.\n'));
+            this.log(chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow(' or missing required jhipster-needle. Reference to ') + moduleName + chalk.yellow(' not added to StackStack app.\n'));
             this.debug('Error:', e);
         }
     }
@@ -716,7 +716,7 @@ module.exports = class extends PrivateBase {
                 ]
             }, this);
         } catch (e) {
-            this.log(chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow(' or missing required jhipster-needle. Interceptor not added to JHipster app.\n'));
+            this.log(chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow(' or missing required jhipster-needle. Interceptor not added to StackStack app.\n'));
             this.debug('Error:', e);
         }
     }
@@ -949,7 +949,7 @@ module.exports = class extends PrivateBase {
     /**
      * Add a new social connection factory in the SocialConfiguration.java file.
      *
-     * @param {string} javaDir - default java directory of the project (JHipster const)
+     * @param {string} javaDir - default java directory of the project (StackStack const)
      * @param {string} importPackagePath - package path of the ConnectionFactory class
      * @param {string} socialName - name of the social module
      * @param {string} connectionFactoryClassName - name of the ConnectionFactory class
@@ -1008,10 +1008,10 @@ module.exports = class extends PrivateBase {
      * example:
      *
      * style = '.jhipster {\n     color: #baa186;\n}'
-     * comment = 'New JHipster color'
+     * comment = 'New StackStack color'
      *
      * * ==========================================================================
-     * New JHipster color
+     * New StackStack color
      * ========================================================================== *
      * .jhipster {
      *     color: #baa186;
@@ -1040,7 +1040,7 @@ module.exports = class extends PrivateBase {
                 ]
             }, this);
         } catch (e) {
-            this.log(chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow(' or missing required jhipster-needle. Style not added to JHipster app.\n'));
+            this.log(chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow(' or missing required jhipster-needle. Style not added to StackStack app.\n'));
             this.debug('Error:', e);
         }
     }
@@ -1083,7 +1083,7 @@ module.exports = class extends PrivateBase {
                 ]
             }, this);
         } catch (e) {
-            this.log(chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow(' or missing required jhipster-needle. Style not added to JHipster app.\n'));
+            this.log(chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow(' or missing required jhipster-needle. Style not added to StackStack app.\n'));
             this.debug('Error:', e);
         }
     }
@@ -1371,7 +1371,7 @@ module.exports = class extends PrivateBase {
      * Register a module configuration to .jhipster/modules/jhi-hooks.json
      *
      * @param {string} npmPackageName - npm package name of the generator
-     * @param {string} hookFor - from which JHipster generator this should be hooked ( 'entity' or 'app')
+     * @param {string} hookFor - from which StackStack generator this should be hooked ( 'entity' or 'app')
      * @param {string} hookType - where to hook this at the generator stage ( 'pre' or 'post')
      * @param {string} callbackSubGenerator[optional] - sub generator to invoke, if this is not given the module's main generator will be called, i.e app
      * @param {string} description[optional] - description of the generator
@@ -1387,7 +1387,7 @@ module.exports = class extends PrivateBase {
             const moduleConfig = {
                 name: `${moduleName} generator`,
                 npmPackageName,
-                description: description || `A JHipster module to generate ${moduleName}`,
+                description: description || `A StackStack module to generate ${moduleName}`,
                 hookFor,
                 hookType,
                 generatorCallback
@@ -1398,7 +1398,7 @@ module.exports = class extends PrivateBase {
                 duplicate = _.findIndex(modules, moduleConfig) !== -1;
             } catch (err) {
                 error = true;
-                this.log(chalk.red('The JHipster module configuration file could not be read!'));
+                this.log(chalk.red('The StackStack module configuration file could not be read!'));
                 this.debug('Error:', err);
             }
             if (!error && !duplicate) {
@@ -1424,7 +1424,7 @@ module.exports = class extends PrivateBase {
             entityJson[key] = value;
             this.fs.writeJSON(file, entityJson, null, 4);
         } catch (err) {
-            this.log(chalk.red('The JHipster entity configuration file could not be read!') + err);
+            this.log(chalk.red('The StackStack entity configuration file could not be read!') + err);
             this.debug('Error:', err);
         }
     }
@@ -1496,7 +1496,7 @@ module.exports = class extends PrivateBase {
         try {
             entityJson = this.fs.readJSON(path.join(JHIPSTER_CONFIG_DIR, `${_.upperFirst(file)}.json`));
         } catch (err) {
-            this.log(chalk.red(`The JHipster entity configuration file could not be read for file ${file}!`) + err);
+            this.log(chalk.red(`The StackStack entity configuration file could not be read for file ${file}!`) + err);
             this.debug('Error:', err);
         }
 
@@ -1544,7 +1544,7 @@ module.exports = class extends PrivateBase {
     }
 
     /**
-     * Check if the JHipster version used to generate an existing project is less than the passed version argument
+     * Check if the StackStack version used to generate an existing project is less than the passed version argument
      *
      * @param {string} version - A valid semver version string
      */
@@ -1584,7 +1584,7 @@ module.exports = class extends PrivateBase {
     }
 
     /**
-     * get a table name in JHipster preferred style.
+     * get a table name in StackStack preferred style.
      *
      * @param {string} value - table name string
      */
@@ -1593,7 +1593,7 @@ module.exports = class extends PrivateBase {
     }
 
     /**
-     * get a table column name in JHipster preferred style.
+     * get a table column name in StackStack preferred style.
      *
      * @param {string} value - table column name string
      */
@@ -1602,7 +1602,7 @@ module.exports = class extends PrivateBase {
     }
 
     /**
-     * get a table column names plural form in JHipster preferred style.
+     * get a table column names plural form in StackStack preferred style.
      *
      * @param {string} value - table column name string
      */
@@ -1611,7 +1611,7 @@ module.exports = class extends PrivateBase {
     }
 
     /**
-     * get a table name for joined tables in JHipster preferred style.
+     * get a table name for joined tables in StackStack preferred style.
      *
      * @param {string} entityName - name of the entity
      * @param {string} relationshipName - name of the related entity
@@ -1639,7 +1639,7 @@ module.exports = class extends PrivateBase {
     }
 
     /**
-     * get a constraint name for tables in JHipster preferred style.
+     * get a constraint name for tables in StackStack preferred style.
      *
      * @param {string} entityName - name of the entity
      * @param {string} relationshipName - name of the related entity
@@ -1744,7 +1744,7 @@ module.exports = class extends PrivateBase {
     }
 
     /**
-     * Prints a JHipster logo.
+     * Prints a StackStack logo.
      */
     printJHipsterLogo() {
         this.log('\n');
@@ -1754,14 +1754,14 @@ module.exports = class extends PrivateBase {
         this.log(`${chalk.green('  ██╗   ██║')}${chalk.red(' ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║')}`);
         this.log(`${chalk.green('  ╚██████╔╝')}${chalk.red(' ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗')}`);
         this.log(`${chalk.green('   ╚═════╝ ')}${chalk.red(' ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝')}\n`);
-        this.log(chalk.white.bold('                            http://www.jhipster.tech\n'));
-        this.log(chalk.white('Welcome to the JHipster Generator ') + chalk.yellow(`v${packagejs.version}`));
-        this.log(chalk.white(`Documentation for creating an application: ${chalk.yellow('http://www.jhipster.tech/creating-an-app/')}`));
+        this.log(chalk.white.bold('                            http://stackstack.io\n'));
+        this.log(chalk.white('Welcome to the StackStack Generator ') + chalk.yellow(`v${packagejs.version}`));
+        this.log(chalk.white(`Documentation for creating an application: ${chalk.yellow('http://stackstack.io/creating-an-app/')}`));
         this.log(chalk.white(`Application files will be generated in folder: ${chalk.yellow(process.cwd())}`));
     }
 
     /**
-     * Checks if there is a newer JHipster version available.
+     * Checks if there is a newer StackStack version available.
      */
     checkForNewVersion() {
         try {
@@ -1769,7 +1769,7 @@ module.exports = class extends PrivateBase {
             shelljs.exec(`npm show ${GENERATOR_JHIPSTER} version`, { silent: true }, (code, stdout, stderr) => {
                 if (!stderr && semver.lt(packagejs.version, stdout)) {
                     this.log(`${chalk.yellow(' ______________________________________________________________________________\n\n') +
-                        chalk.yellow('  JHipster update available: ') + chalk.green.bold(stdout.replace('\n', '')) + chalk.gray(` (current: ${packagejs.version})`)}\n`);
+                        chalk.yellow('  StackStack update available: ') + chalk.green.bold(stdout.replace('\n', '')) + chalk.gray(` (current: ${packagejs.version})`)}\n`);
                     if (this.useYarn) {
                         this.log(chalk.yellow(`  Run ${chalk.magenta(`yarn global upgrade ${GENERATOR_JHIPSTER}`)} to update.\n`));
                     } else {

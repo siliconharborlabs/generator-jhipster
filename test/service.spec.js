@@ -8,7 +8,7 @@ const constants = require('../generators/generator-constants');
 
 const SERVER_MAIN_SRC_DIR = constants.SERVER_MAIN_SRC_DIR;
 
-describe('JHipster generator service', () => {
+describe('StackStack generator service', () => {
     describe('creates service without interface', () => {
         beforeEach((done) => {
             helpers.run(require.resolve('../generators/service'))

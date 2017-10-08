@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://stackstack.io/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -208,7 +208,7 @@ public class AccountResource {
                 authentication = new OAuth2Authentication(authentication.getOAuth2Request(), token);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
 
-                // save account in to sync users between IdP and JHipster's local database
+                // save account in to sync users between IdP and StackStack's local database
                 Optional<User> existingUser = userRepository.findOneByLogin(userDTO.getLogin());
                 if (existingUser.isPresent()) {
                     // if IdP sends last updated information, use it to determine if an update should happen

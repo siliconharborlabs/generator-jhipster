@@ -1,7 +1,7 @@
 /**
  * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the StackStack project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://stackstack.io/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -442,7 +442,7 @@ module.exports = class extends Generator {
      *
      * @param {string} value - table column name or table name string
      * @see org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
-     * @returns hibernate SnakeCase in JHipster preferred style
+     * @returns hibernate SnakeCase in StackStack preferred style
      */
     hibernateSnakeCase(value) {
         let res = '';

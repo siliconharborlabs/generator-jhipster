@@ -1,7 +1,7 @@
 /**
- * Copyright 2013-2017 the original author or authors from the JHipster project.
+ * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the JHipster project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://stackstack.io/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,8 +39,8 @@ module.exports = class extends BaseGenerator {
     get initializing() {
         return {
             displayLogo() {
-                this.log(chalk.green('Welcome to the JHipster Upgrade Sub-Generator'));
-                this.log(chalk.green('This will upgrade your current application codebase to the latest JHipster version'));
+                this.log(chalk.green('Welcome to the StackStack Upgrade Sub-Generator'));
+                this.log(chalk.green('This will upgrade your current application codebase to the latest StackStack version'));
             },
 
             loadConfig() {
@@ -74,7 +74,7 @@ module.exports = class extends BaseGenerator {
     }
 
     _generate(version, callback) {
-        this.log(`Regenerating application with JHipster ${version}...`);
+        this.log(`Regenerating application with StackStack ${version}...`);
         let generatorCommand = 'yo jhipster';
         if (semver.gte(version, FIRST_CLI_SUPPORTED_VERSION)) {
             const generatorDir = this.clientPackageManager === 'yarn' ? shelljs.exec('yarn bin', { silent: this.silent }).stdout : shelljs.exec('npm bin', { silent: this.silent }).stdout;
@@ -83,7 +83,7 @@ module.exports = class extends BaseGenerator {
         const regenerateCmd = `${generatorCommand} --with-entities --force --skip-install`;
         this.info(regenerateCmd);
         shelljs.exec(regenerateCmd, { silent: this.silent }, (code, msg, err) => {
-            if (code === 0) this.success(`Successfully regenerated application with JHipster ${version}`);
+            if (code === 0) this.success(`Successfully regenerated application with StackStack ${version}`);
             else this.error(`Something went wrong while generating project! ${err}`);
             callback();
         });
@@ -115,7 +115,7 @@ module.exports = class extends BaseGenerator {
             const keystore = `${SERVER_MAIN_RES_DIR}keystore.jks`;
             this.info(`Removing ${keystore}`);
             shelljs.rm('-Rf', keystore);
-            this._gitCommitAll(`Generated with JHipster ${version}`, () => {
+            this._gitCommitAll(`Generated with StackStack ${version}`, () => {
                 callback();
             });
         });
@@ -142,7 +142,7 @@ module.exports = class extends BaseGenerator {
                 const commandPrefix = this.clientPackageManager === 'yarn' ? 'yarn info' : 'npm show';
                 shelljs.exec(`${commandPrefix} ${GENERATOR_JHIPSTER} version`, { silent: this.silent }, (code, msg, err) => {
                     if (err) {
-                        this.warning(`Something went wrong fetching the latest JHipster version number...\n${err}`);
+                        this.warning(`Something went wrong fetching the latest StackStack version number...\n${err}`);
                         this.error('Exiting process');
                     }
                     this.latestVersion = this.clientPackageManager === 'yarn' ? msg.split('\n')[1] : msg.replace('\n', '');
@@ -227,13 +227,13 @@ module.exports = class extends BaseGenerator {
                 };
 
                 const installJhipsterLocally = (version, callback) => {
-                    this.log(`Installing JHipster ${version} locally`);
+                    this.log(`Installing StackStack ${version} locally`);
                     const commandPrefix = this.clientPackageManager === 'yarn' ? 'yarn add' : 'npm install';
                     const generatorCommand = `${commandPrefix} ${GENERATOR_JHIPSTER}@${version} --dev --no-lockfile --ignore-scripts`;
                     this.info(generatorCommand);
                     shelljs.exec(generatorCommand, { silent: this.silent }, (code, msg, err) => {
                         if (code === 0) this.success(`Installed ${GENERATOR_JHIPSTER}@${version}`);
-                        else this.error(`Something went wrong while installing the JHipster generator! ${msg} ${err}`);
+                        else this.error(`Something went wrong while installing the StackStack generator! ${msg} ${err}`);
                         callback();
                     });
                 };
@@ -286,7 +286,7 @@ module.exports = class extends BaseGenerator {
                 this.info(generatorCommand);
                 shelljs.exec(generatorCommand, { silent: this.silent }, (code, msg, err) => {
                     if (code === 0) this.success(`Updated ${GENERATOR_JHIPSTER} to version ${this.latestVersion}`);
-                    else this.error(`Something went wrong while updating JHipster! ${msg} ${err}`);
+                    else this.error(`Something went wrong while updating StackStack! ${msg} ${err}`);
                     done();
                 });
             },

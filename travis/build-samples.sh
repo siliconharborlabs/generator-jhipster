@@ -58,7 +58,7 @@ if [ "$1" = "build" ]; then
             if [ -f "$JHIPSTER_SAMPLES/$dir/.yo-rc.json" ]; then
                 buildProject "$dir"
             else
-                echo "$dir: Not a JHipster project. Skipping"
+                echo "$dir: Not a StackStack project. Skipping"
             fi
         done
     fi
@@ -70,7 +70,7 @@ elif [ "$1" = "generate" ]; then
             if [ -f "$JHIPSTER_SAMPLES/$dir/.yo-rc.json" ]; then
                 generateProject "$dir"
             else
-                echo "$dir: Not a JHipster project. Skipping"
+                echo "$dir: Not a StackStack project. Skipping"
             fi
         done
     fi
@@ -82,7 +82,7 @@ elif [ "$1" = "clean" ]; then
             if [ -f "$JHIPSTER_SAMPLES/$dir-sample/.yo-rc.json" ]; then
                 cleanProject "$dir-sample"
             else
-                echo "$dir-sample: Not a JHipster project. Skipping"
+                echo "$dir-sample: Not a StackStack project. Skipping"
             fi
         done
     fi

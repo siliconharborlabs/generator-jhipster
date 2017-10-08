@@ -1,6 +1,6 @@
 <!--
 - Please follow the issue template below for bug reports and feature requests.
-- If you have a support request rather than a bug, please use [Stack Overflow](http://stackoverflow.com/questions/tagged/jhipster) with the JHipster tag.
+- If you have a support request rather than a bug, please use [Stack Overflow](http://stackoverflow.com/questions/tagged/jhipster) with the StackStack tag.
 - For bug reports it is mandatory to run the command `jhipster info` in your project's root folder, and paste the result here.
 - Tickets opened without any of these pieces of information will be **closed** without any explanation.
 -->
@@ -26,13 +26,13 @@
 <!-- For bug reports, if you can't fix the bug yourself, perhaps you can point to what might be
   causing the problem (line of code or commit) -->
 
-##### **JHipster Version(s)**
+##### **StackStack Version(s)**
 
 <!--
-Which version of JHipster are you using, is it a regression?
+Which version of StackStack are you using, is it a regression?
 -->
 
-##### **JHipster configuration**
+##### **StackStack configuration**
 
 <!--
 To provide all information we need, you should run `jhipster info` in the project root folder, and

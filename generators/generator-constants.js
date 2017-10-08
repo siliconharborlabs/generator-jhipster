@@ -1,7 +1,7 @@
 /**
  * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the StackStack project, see http://www.jhipster.tech/
+ * This file is part of the StackStack project, see http://stackstack.io/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,7 +64,7 @@ const CLIENT_DIST_DIR = 'www/';
 const SUPPORTED_VALIDATION_RULES = ['required', 'max', 'min', 'maxlength', 'minlength', 'maxbytes', 'minbytes', 'pattern'];
 
 // documentation constants
-const JHIPSTER_DOCUMENTATION_URL = 'http://www.jhipster.tech';
+const JHIPSTER_DOCUMENTATION_URL = 'http://stackstack.io';
 const JHIPSTER_DOCUMENTATION_ARCHIVE_PATH = '/documentation-archive/';
 
 const SQL_DB_OPTIONS = [

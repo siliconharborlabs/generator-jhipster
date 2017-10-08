@@ -9,7 +9,7 @@ const constants = require('../generators/generator-constants');
 const CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR;
 const SERVER_MAIN_RES_DIR = constants.SERVER_MAIN_RES_DIR;
 
-describe('JHipster generator languages', () => {
+describe('StackStack generator languages', () => {
     context('Cretes default i18n files', () => {
         constants.LANGUAGES.forEach((language) => {
             describe(`for ${language.name}`, () => {
@@ -55,15 +55,15 @@ describe('JHipster generator languages', () => {
                 it('contains 3 needles in global.json', () => {
                     assert.fileContent(
                         `${CLIENT_MAIN_SRC_DIR}i18n/${language.value}/global.json`,
-                        '"jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)"'
+                        '"jhipster-needle-menu-add-element": "StackStack will add additional menu entries here (do not translate!)"'
                     );
                     assert.fileContent(
                         `${CLIENT_MAIN_SRC_DIR}i18n/${language.value}/global.json`,
-                        '"jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"'
+                        '"jhipster-needle-menu-add-entry": "StackStack will add additional entities here (do not translate!)"'
                     );
                     assert.fileContent(
                         `${CLIENT_MAIN_SRC_DIR}i18n/${language.value}/global.json`,
-                        '"jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"'
+                        '"jhipster-needle-menu-add-admin-element": "StackStack will add additional menu entries here (do not translate!)"'
                     );
                 });
             });

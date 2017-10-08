@@ -3,7 +3,7 @@
 const assert = require('yeoman-assert');
 const utils = require('../generators/utils');
 
-describe('JHipster Utils', () => {
+describe('StackStack Utils', () => {
     describe('::getJavadoc', () => {
         describe('when passing a negative or nil increment', () => {
             it('returns the comment with no increment', () => {

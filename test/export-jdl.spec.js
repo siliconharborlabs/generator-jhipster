@@ -6,7 +6,7 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fse = require('fs-extra');
 
-describe('JHipster generator export jdl', () => {
+describe('StackStack generator export jdl', () => {
     describe('exports entities to a JDL file without argument', () => {
         beforeEach((done) => {
             helpers.run(require.resolve('../generators/export-jdl'))

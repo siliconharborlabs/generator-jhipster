@@ -16,7 +16,7 @@ const SERVER_MAIN_SRC_DIR = constants.SERVER_MAIN_SRC_DIR;
 const SERVER_MAIN_RES_DIR = constants.SERVER_MAIN_RES_DIR;
 const TEST_DIR = constants.TEST_DIR;
 
-describe('JHipster generator', () => {
+describe('StackStack generator', () => {
     context('Default configuration with', () => {
         describe('AngularJS', () => {
             beforeEach((done) => {

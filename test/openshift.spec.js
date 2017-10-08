@@ -53,7 +53,7 @@ const expectedFiles = {
     ]
 };
 
-describe('JHipster OpenShift Sub Generator', () => {
+describe('StackStack OpenShift Sub Generator', () => {
     describe('only gateway', () => {
         beforeEach((done) => {
             helpers

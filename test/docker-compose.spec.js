@@ -27,7 +27,7 @@ const expectedFiles = {
     ]
 };
 
-describe('JHipster Docker Compose Sub Generator', () => {
+describe('StackStack Docker Compose Sub Generator', () => {
     describe('only gateway', () => {
         beforeEach((done) => {
             helpers

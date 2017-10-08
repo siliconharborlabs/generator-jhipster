@@ -1,7 +1,7 @@
 module.exports = {
     app: {
         default: true,
-        desc: 'Create a new JHipster application based on the selected options'
+        desc: 'Create a new StackStack application based on the selected options'
     },
     aws: {
         desc: 'Deploy the current application to Amazon Web Services'
@@ -10,7 +10,7 @@ module.exports = {
         desc: 'Create pipeline scripts for popular Continuous Integration/Continuous Deployment tools'
     },
     client: {
-        desc: 'Create a new JHipster client-side application based on the selected options'
+        desc: 'Create a new StackStack client-side application based on the selected options'
     },
     cloudfoundry: {
         desc: 'Generate a `deploy/cloudfoundry` folder with a specific manifest.yml to deploy to Cloud Foundry'
@@ -20,7 +20,7 @@ module.exports = {
     },
     entity: {
         argument: ['name'],
-        desc: 'Create a new JHipster entity: JPA entity, Spring server-side components and Angular client-side components'
+        desc: 'Create a new StackStack entity: JPA entity, Spring server-side components and Angular client-side components'
     },
     'export-jdl': {
         argument: ['jdlFile'],
@@ -50,13 +50,13 @@ module.exports = {
         desc: 'Deploy the current application to Rancher'
     },
     server: {
-        desc: 'Create a new JHipster server-side application'
+        desc: 'Create a new StackStack server-side application'
     },
     service: {
         argument: ['name'],
         desc: 'Create a new Spring service bean'
     },
     upgrade: {
-        desc: 'Upgrade the JHipster version, and upgrade the generated application'
+        desc: 'Upgrade the StackStack version, and upgrade the generated application'
     }
 };

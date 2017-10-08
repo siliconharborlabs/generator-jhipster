@@ -75,7 +75,7 @@ const expectedFiles = {
         `${TEST_DIR}gatling/user-files/simulations/FooGatlingTest.scala`
     ]
 };
-describe('JHipster generator entity for angular1', () => {
+describe('StackStack generator entity for angular1', () => {
     describe('no dto, no service, no pagination', () => {
         beforeEach((done) => {
             helpers.run(require.resolve('../generators/entity'))
@@ -103,7 +103,7 @@ describe('JHipster generator entity for angular1', () => {
         });
     });
 
-    describe('JHipster generator entity with all languages', () => {
+    describe('StackStack generator entity with all languages', () => {
         describe('no dto, no service, no pagination', () => {
             beforeEach((done) => {
                 helpers.run(require.resolve('../generators/entity'))
@@ -307,7 +307,7 @@ describe('JHipster generator entity for angular1', () => {
     });
 });
 
-describe('JHipster generator entity for angularX', () => {
+describe('StackStack generator entity for angularX', () => {
     describe('no dto, no service, no pagination', () => {
         beforeEach((done) => {
             helpers.run(require.resolve('../generators/entity'))

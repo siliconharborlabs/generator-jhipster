@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://www.jhipster.tech/
+ This file is part of the StackStack project, see http://stackstack.io/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -89,9 +89,9 @@ The `<%= clientPackageManager %> run` command will list all of the scripts avail
 
 ## OAuth 2.0 / OpenID Connect
 
-Congratulations! You've selected an excellent way to secure your JHipster application. If you're not sure what OAuth and OpenID Connect (OIDC) are, please see [What the Heck is OAuth?](https://developer.okta.com/blog/2017/06/21/what-the-heck-is-oauth)
+Congratulations! You've selected an excellent way to secure your StackStack application. If you're not sure what OAuth and OpenID Connect (OIDC) are, please see [What the Heck is OAuth?](https://developer.okta.com/blog/2017/06/21/what-the-heck-is-oauth)
 
-To log in to your app, you'll need to have [Keycloak](https://keycloak.org) up and running. The JHipster Team has created a Docker container for you that has the default users and roles. You can see [the settings for Keycloak on GitHub](https://github.com/danielpetisme/jhipster-keycloak). Start Keycloak using the following command.
+To log in to your app, you'll need to have [Keycloak](https://keycloak.org) up and running. The StackStack Team has created a Docker container for you that has the default users and roles. You can see [the settings for Keycloak on GitHub](https://github.com/danielpetisme/jhipster-keycloak). Start Keycloak using the following command.
 
 ```
 docker-compose -f src/main/docker/keycloak.yml up

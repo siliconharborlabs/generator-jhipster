@@ -24,7 +24,7 @@ const expectedFiles = {
     ]
 };
 
-describe('JHipster CI-CD Sub Generator', () => {
+describe('StackStack CI-CD Sub Generator', () => {
     describe('Gradle Angular1 NPM', () => {
         beforeEach((done) => {
             helpers

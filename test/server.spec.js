@@ -7,7 +7,7 @@ const getFilesForOptions = require('./utils/utils').getFilesForOptions;
 const expectedFiles = require('./utils/expected-files');
 const angularfiles = require('../generators/client/files-angular').files;
 
-describe('JHipster server generator', () => {
+describe('StackStack server generator', () => {
     describe('generate server', () => {
         beforeEach((done) => {
             helpers.run(path.join(__dirname, '../generators/server'))

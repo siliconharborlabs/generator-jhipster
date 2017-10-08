@@ -12,7 +12,7 @@ const expectedFiles = {
     ]
 };
 
-describe('JHipster Rancher Compose Sub Generator', () => {
+describe('StackStack Rancher Compose Sub Generator', () => {
     describe('only gateway', () => {
         beforeEach((done) => {
             helpers
