@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,9 +39,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class <%= entityAngularName %>Service {
 
-    private resourceUrl = <% if (applicationType === 'gateway' && locals.microserviceName) { %>'/<%= microserviceName.toLowerCase() %>/<% } else if (authenticationType === 'uaa') { %>'<% } else { %>SERVER_API_URL + '<% } %>api/<%= entityApiUrl %>';
+    private resourceUrl = <% if (applicationType === 'gateway' && locals.microserviceName) { %>'<%= microserviceName.toLowerCase() %>/<% } else if (authenticationType === 'uaa') { %>'<% } else { %>SERVER_API_URL + '<% } %>api/<%= entityApiUrl %>';
     <%_ if(searchEngine === 'elasticsearch') { _%>
-    private resourceSearchUrl = <% if (applicationType === 'gateway' && locals.microserviceName) { %>'/<%= microserviceName.toLowerCase() %>/<% } else if (authenticationType === 'uaa') { %>'<% } else { %>SERVER_API_URL + '<% } %>api/_search/<%= entityApiUrl %>';
+    private resourceSearchUrl = <% if (applicationType === 'gateway' && locals.microserviceName) { %>'<%= microserviceName.toLowerCase() %>/<% } else if (authenticationType === 'uaa') { %>'<% } else { %>SERVER_API_URL + '<% } %>api/_search/<%= entityApiUrl %>';
     <%_ } _%>
 
     constructor(private http: Http<% if (hasDate) { %>, private dateUtils: JhiDateUtils<% } %>) { }
@@ -55,8 +55,13 @@ export class <%= entityAngularName %>Service {
     <%_ } _%>
         const copy = this.convert(<%= entityInstance %>);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
+            <%_ if(hasDate) { _%>
             const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
+            this.convertItemFromServer(jsonResponse);
+            return jsonResponse;
+            <%_ } else { _%>
+            return res.json();
+            <%_ } _%>
         });
     }
     <%_ if (entityAngularName.length <= 30) { _%>
@@ -69,15 +74,25 @@ export class <%= entityAngularName %>Service {
     <%_ } _%>
         const copy = this.convert(<%= entityInstance %>);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
+            <%_ if(hasDate) { _%>
             const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
+            this.convertItemFromServer(jsonResponse);
+            return jsonResponse;
+            <%_ } else { _%>
+            return res.json();
+            <%_ } _%>
         });
     }
 
     find(id: <% if (pkType === 'String') { %>string<% } else { %>number<% } %>): Observable<<%= entityAngularName %>> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
+            <%_ if(hasDate) { _%>
             const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
+            this.convertItemFromServer(jsonResponse);
+            return jsonResponse;
+            <%_ } else { _%>
+            return res.json();
+            <%_ } _%>
         });
     }
 
@@ -101,34 +116,29 @@ export class <%= entityAngularName %>Service {
 
     private convertResponse(res: Response): ResponseWrapper {
         const jsonResponse = res.json();
-        const result = [];
+    <%_ if(hasDate) { _%>
         for (let i = 0; i < jsonResponse.length; i++) {
-            result.push(this.convertItemFromServer(jsonResponse[i]));
+            this.convertItemFromServer(jsonResponse[i]);
         }
-        return new ResponseWrapper(res.headers, result, res.status);
+    <%_ } _%>
+        return new ResponseWrapper(res.headers, jsonResponse, res.status);
     }
+    <%_ if(hasDate) { _%>
 
-    /**
-     * Convert a returned JSON object to <%= entityAngularName %>.
-     */
-    private convertItemFromServer(json: any): <%= entityAngularName %> {
-        const entity: <%= entityAngularName %> = Object.assign(new <%= entityAngularName %>(), json);
+    private convertItemFromServer(entity: any) {
         <%_ for (idx in fields) { _%>
             <%_ if (fields[idx].fieldType === 'LocalDate') { _%>
         entity.<%=fields[idx].fieldName%> = this.dateUtils
-            .convertLocalDateFromServer(json.<%=fields[idx].fieldName%>);
+            .convertLocalDateFromServer(entity.<%=fields[idx].fieldName%>);
             <%_ } _%>
             <%_ if (['Instant', 'ZonedDateTime'].includes(fields[idx].fieldType)) { _%>
         entity.<%=fields[idx].fieldName%> = this.dateUtils
-            .convertDateTimeFromServer(json.<%=fields[idx].fieldName%>);
+            .convertDateTimeFromServer(entity.<%=fields[idx].fieldName%>);
             <%_ } _%>
         <%_ } _%>
-        return entity;
     }
+    <%_ } _%>
 
-    /**
-     * Convert a <%= entityAngularName %> to a JSON which can be sent to the server.
-     */
     private convert(<%= entityInstance %>: <%= entityAngularName %>): <%= entityAngularName %> {
         const copy: <%= entityAngularName %> = Object.assign({}, <%= entityInstance %>);
         <%_ for (idx in fields){ if (fields[idx].fieldType === 'LocalDate') { _%>

@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -%>
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable, Observer, Subscription } from 'rxjs/Rx';
 
@@ -24,6 +24,9 @@ import { CSRFService } from '../auth/csrf.service';
 import { WindowRef } from './window.service';
 <%_ if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
 import { AuthServerProvider } from '../auth/auth-jwt.service';
+<%_ } _%>
+<%_ if (authenticationType === 'oauth2') { _%>
+import { AuthServerProvider } from '../auth/auth-oauth2.service';
 <%_ } _%>
 
 import * as SockJS from 'sockjs-client';
@@ -42,11 +45,10 @@ export class <%=jhiPrefixCapitalized%>TrackerService {
 
     constructor(
         private router: Router,
-        <%_ if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
+        <%_ if (authenticationType === 'jwt' || authenticationType === 'uaa' || authenticationType === 'oauth2') { _%>
         private authServerProvider: AuthServerProvider,
         <%_ } _%>
         private $window: WindowRef,
-        // tslint:disable-next-line: no-unused-variable
         private csrfService: CSRFService
     ) {
         this.connection = this.createConnection();
@@ -61,8 +63,8 @@ export class <%=jhiPrefixCapitalized%>TrackerService {
         const loc = this.$window.nativeWindow.location;
         let url;
         url = '//' + loc.host + loc.pathname + 'websocket/tracker';
-        <%_ if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
-        const authToken = this.authServerProvider.getToken();
+        <%_ if (authenticationType === 'jwt' || authenticationType === 'uaa' || authenticationType === 'oauth2') { _%>
+        const authToken = this.authServerProvider.getToken()<% if (authenticationType === 'oauth2') { %>.access_token<% } %>;
         if (authToken) {
             url += '?access_token=' + authToken;
         }

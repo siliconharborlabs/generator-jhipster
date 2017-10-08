@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,9 @@
  limitations under the License.
 -%>
 import './vendor.ts';
-
+<%_ if (authenticationType === 'uaa') { _%>
+import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
+<%_ } %>
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2Webstorage } from 'ng2-webstorage';
@@ -25,9 +27,7 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 import { <%=angularXAppName%>SharedModule, UserRouteAccessService } from './shared';
 import { <%=angularXAppName%>HomeModule } from './home/home.module';
 import { <%=angularXAppName%>AdminModule } from './admin/admin.module';
-<%_ if (authenticationType !== 'oauth2') { _%>
 import { <%=angularXAppName%>AccountModule } from './account/account.module';
-<%_ } _%>
 import { <%=angularXAppName%>EntityModule } from './entities/entity.module';
 
 import { customHttpProvider } from './blocks/interceptor/http.provider';
@@ -56,9 +56,7 @@ import {
         <%=angularXAppName%>SharedModule,
         <%=angularXAppName%>HomeModule,
         <%=angularXAppName%>AdminModule,
-        <%_ if (authenticationType !== 'oauth2') { _%>
         <%=angularXAppName%>AccountModule,
-        <%_ } _%>
         <%=angularXAppName%>EntityModule,
         // jhipster-needle-angular-add-module StackStack will add new module here
     ],

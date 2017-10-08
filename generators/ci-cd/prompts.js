@@ -1,7 +1,7 @@
 /**
  * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the StackStack project, see http://stackstack.io/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -100,13 +100,6 @@ function askIntegrations() {
             default: 'docker-login'
         },
         {
-            when: response => this.pipelines.includes('jenkins') && response.jenkinsIntegrations.includes('publishDocker'),
-            type: 'input',
-            name: 'dockerRegistryOrganizationName',
-            message: 'What is the Organization Name for the Docker registry?',
-            default: 'docker-login'
-        },
-        {
             when: this.pipelines.includes('gitlab'),
             type: 'confirm',
             name: 'gitlabUseDocker',
@@ -127,7 +120,6 @@ function askIntegrations() {
         this.jenkinsSonarName = props.jenkinsSonarName;
         this.dockerRegistryURL = props.dockerRegistryURL;
         this.dockerRegistryCredentialsId = props.dockerRegistryCredentialsId;
-        this.dockerRegistryOrganizationName = props.dockerRegistryOrganizationName;
         this.gitlabUseDocker = props.gitlabUseDocker;
         this.heroku = props.heroku;
         done();

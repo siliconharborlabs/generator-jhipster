@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,18 +19,14 @@
 import { JhiEventManager, JhiInterceptableHttp } from 'ng-jhipster';
 import { Injector } from '@angular/core';
 import { Http, XHRBackend, RequestOptions } from '@angular/http';
-
-<%_ if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
-    <%_ if (authenticationType !== 'uaa') { _%>
-import { AuthInterceptor } from './auth.interceptor';
-    <%_ } _%>
-import { LocalStorageService, SessionStorageService } from 'ng2-webstorage';
+<%_ if (authenticationType === 'session') { _%>
+import { Router } from '@angular/router/router';
 <%_ } _%>
-<%_ if (authenticationType === 'session' || authenticationType === 'oauth2') { _%>
-    <%_ if (authenticationType === 'session') { _%>
-import { AuthServerProvider } from '../../shared/auth/auth-session.service';
-import { LoginModalService } from '../../shared/login/login-modal.service';
-    <%_ } _%>
+
+<%_ if (authenticationType === 'oauth2' || authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
+import { AuthInterceptor } from './auth.interceptor';
+import { LocalStorageService, SessionStorageService } from 'ng2-webstorage';
+<%_ } if (authenticationType === 'session') { _%>
 import { StateStorageService } from '../../shared/auth/state-storage.service';
 <%_ } _%>
 <%_ if (!skipServer) { _%>
@@ -42,17 +38,14 @@ import { NotificationInterceptor } from './notification.interceptor';
 export function interceptableFactory(
     backend: XHRBackend,
     defaultOptions: RequestOptions,
-    <%_ if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
+    <%_ if (authenticationType === 'oauth2' || authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
     localStorage: LocalStorageService,
     sessionStorage: SessionStorageService,
     injector: Injector,
-    <%_ } else if (authenticationType === 'session') { _%>
+    <%_ } if (authenticationType === 'session') { _%>
     injector: Injector,
     stateStorageService: StateStorageService,
-    loginServiceModal: LoginModalService,
-    <%_ } else if (authenticationType === 'oauth2') { _%>
-    injector: Injector,
-    stateStorageService: StateStorageService,
+    router: Router,
     <%_ } _%>
     eventManager: JhiEventManager
 ) {
@@ -60,16 +53,11 @@ export function interceptableFactory(
         backend,
         defaultOptions,
         [
-        <%_ if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
-            <%_ if (authenticationType !== 'uaa') { _%>
+        <%_ if (authenticationType === 'oauth2' || authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
             new AuthInterceptor(localStorage, sessionStorage),
-            <%_ } _%>
             new AuthExpiredInterceptor(injector),
-        <%_ } else if (authenticationType === 'session') { _%>
-            new AuthExpiredInterceptor(injector, stateStorageService,
-                loginServiceModal),
-        <%_ } else if (authenticationType === 'oauth2') { _%>
-        new AuthExpiredInterceptor(injector, stateStorageService),
+        <%_ } if (authenticationType === 'session') { _%>
+            new AuthExpiredInterceptor(injector, stateStorageService, router),
         <%_ } _%>
             // Other interceptors can be added here
             new ErrorHandlerInterceptor(eventManager),
@@ -85,16 +73,13 @@ export function customHttpProvider() {
         deps: [
             XHRBackend,
             RequestOptions,
-            <%_ if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
+            <%_ if (authenticationType === 'oauth2' || authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
             LocalStorageService,
             SessionStorageService,
             Injector,
-            <%_ } else if (authenticationType === 'session' || authenticationType === 'oauth2') { _%>
+            <%_ } if (authenticationType === 'session') { _%>
             Injector,
             StateStorageService,
-                <%_ if (authenticationType === 'session') { _%>
-            LoginModalService,
-                <%_ } _%>
             <%_ } _%>
             JhiEventManager
         ]

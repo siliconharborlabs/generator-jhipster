@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,10 +17,12 @@
  limitations under the License.
 -%>
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Response } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiPaginationUtil, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
 import { ITEMS_PER_PAGE, Principal, User, UserService, ResponseWrapper } from '../../shared';
+import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
 
 @Component({
     selector: '<%=jhiPrefix%>-user-mgmt',
@@ -50,6 +52,10 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
         private alertService: JhiAlertService,
         private principal: Principal,
         private eventManager: JhiEventManager,
+        <%_ if (databaseType !== 'cassandra') { _%>
+        private paginationUtil: JhiPaginationUtil,
+        private paginationConfig: PaginationConfig,
+        <%_ } _%>
         private activatedRoute: ActivatedRoute,
         private router: Router
     ) {

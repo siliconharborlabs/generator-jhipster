@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,9 +24,9 @@
         .controller('RegisterController', RegisterController);
 
 
-    RegisterController.$inject = [<% if (enableTranslation){ %>'$translate',<% } %> '$timeout', 'Auth', 'LoginService', 'errorConstants'];
+    RegisterController.$inject = [<% if (enableTranslation){ %>'$translate',<% } %> '$timeout', 'Auth', 'LoginService'];
 
-    function RegisterController (<% if (enableTranslation){ %>$translate, <% } %>$timeout, Auth, LoginService, errorConstants) {
+    function RegisterController (<% if (enableTranslation){ %>$translate, <% } %>$timeout, Auth, LoginService) {
         var vm = this;
 
         vm.doNotMatch = null;
@@ -53,9 +53,9 @@
                     vm.success = 'OK';
                 }).catch(function (response) {
                     vm.success = null;
-                    if (response.status === 400 && angular.fromJson(response.data).type === errorConstants.LOGIN_ALREADY_USED_TYPE) {
+                    if (response.status === 400 && response.data === 'login already in use') {
                         vm.errorUserExists = 'ERROR';
-                    } else if (response.status === 400 && angular.fromJson(response.data).type === errorConstants.EMAIL_ALREADY_USED_TYPE) {
+                    } else if (response.status === 400 && response.data === 'email address already in use') {
                         vm.errorEmailExists = 'ERROR';
                     } else {
                         vm.error = 'ERROR';

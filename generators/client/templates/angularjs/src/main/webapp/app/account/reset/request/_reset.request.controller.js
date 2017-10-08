@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +23,9 @@
         .module('<%=angularAppName%>')
         .controller('RequestResetController', RequestResetController);
 
-    RequestResetController.$inject = ['$timeout', 'Auth', 'errorConstants'];
+    RequestResetController.$inject = ['$timeout', 'Auth'];
 
-    function RequestResetController ($timeout, Auth, errorConstants) {
+    function RequestResetController ($timeout, Auth) {
         var vm = this;
 
         vm.error = null;
@@ -45,7 +45,7 @@
                 vm.success = 'OK';
             }).catch(function (response) {
                 vm.success = null;
-                if (response.status === 400 && angular.fromJson(response.data).type === errorConstants.EMAIL_NOT_FOUND_TYPE) {
+                if (response.status === 400 && response.data === 'email address not registered') {
                     vm.errorEmailNotExists = 'ERROR';
                 } else {
                     vm.error = 'ERROR';

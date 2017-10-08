@@ -1,7 +1,7 @@
 /**
  * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the StackStack project, see http://stackstack.io/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -308,7 +308,6 @@ const files = {
                 'components/form/_pagination.constants.js',
                 'components/util/_base64.service.js',
                 'components/util/_capitalize.filter.js',
-                'components/util/_error.constants.js',
                 'components/util/_parse-links.service.js',
                 'components/util/_truncate-characters.filter.js',
                 'components/util/_truncate-words.filter.js',
@@ -350,6 +349,13 @@ const files = {
                 'services/auth/_password-reset-finish.service.js',
                 'services/auth/_register.service.js',
                 'services/user/_user.service.js'
+            ]
+        },
+        {
+            condition: generator => generator.authenticationType === 'oauth2',
+            path: ANGULAR_DIR,
+            templates: [
+                'services/auth/_auth.oauth2.service.js'
             ]
         },
         {

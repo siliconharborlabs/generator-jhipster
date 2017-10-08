@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@
         "name": "<%= dasherizedBaseName %>"
     },
     "apps": [{
-        "root": "<%= MAIN_SRC_DIR.replace(/\/$/, "") %>",
+        "root": "<%= MAIN_SRC_DIR %>",
         "outDir": "<%= DIST_DIR %>app",
         "assets": [
             "content",
@@ -34,7 +34,7 @@
         "index": "index.html",
         "main": "app/app.main.ts",
         "polyfills": "app/polyfills.ts",
-        "test": "<%= TEST_SRC_DIR %>spec/entry.ts",
+        "test": "",
         "tsconfig": "../../../tsconfig.json",
         "prefix": "<%= jhiPrefix %>",
         "mobile": false,
@@ -77,20 +77,13 @@
         "prefixInterfaces": false,
         "component" : {
             "inlineStyle" : true,
-            "inlineTemplate": false,
-            "spec": false
+            "inlineTemplate": false
         },
-        "directive" : {
-            "spec": false
-        },
-        "guard" : {
-            "spec": false
-        },
-        "pipe" : {
-            "spec": false
-        },
-        "service" : {
-            "spec": false
+        "spec": {
+            "component": false,
+            "directive": false,
+            "pipe": false,
+            "service": false
         }
     },
     "packageManager": "yarn"

@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,10 +20,8 @@
 
 User-agent: *
 Disallow: /api/account
-<%_ if (authenticationType !== 'oauth2') { _%>
 Disallow: /api/account/change-password
 Disallow: /api/account/sessions
-<%_ } _%>
 Disallow: /api/audits/
 Disallow: /api/logs/
 Disallow: /api/users/

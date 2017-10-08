@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -119,7 +119,7 @@
                     size: 'lg',
                     resolve: {
                         entity: ['User', function(User) {
-                            return User.get({login : $stateParams.login}).$promise;
+                            return User.get({login : $stateParams.login});
                         }]
                     }
                 }).result.then(function() {
@@ -163,7 +163,7 @@
                     size: 'md',
                     resolve: {
                         entity: ['User', function(User) {
-                            return User.get({login : $stateParams.login}).$promise;
+                            return User.get({login : $stateParams.login});
                         }]
                     }
                 }).result.then(function() {

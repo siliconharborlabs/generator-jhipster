@@ -1,7 +1,7 @@
 /**
  * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the StackStack project, see http://stackstack.io/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,17 +16,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+const util = require('util');
+const generator = require('yeoman-generator');
 const chalk = require('chalk');
 const _ = require('lodash');
 const BaseGenerator = require('../generator-base');
 
 const constants = require('../generator-constants');
 
+const LanguagesGenerator = generator.extend({});
+
+util.inherits(LanguagesGenerator, BaseGenerator);
+
 let configOptions = {};
 
-module.exports = class extends BaseGenerator {
-    constructor(args, opts) {
-        super(args, opts);
+module.exports = LanguagesGenerator.extend({
+    constructor: function (...args) { // eslint-disable-line object-shorthand
+        generator.apply(this, args);
 
         configOptions = this.options.configOptions || {};
 
@@ -51,7 +57,6 @@ module.exports = class extends BaseGenerator {
             defaults: false
         });
 
-        this.authenticationType = this.config.get('authenticationType');
         this.skipClient = this.options['skip-client'] || this.config.get('skipClient');
         this.skipServer = this.options['skip-server'] || this.config.get('skipServer');
         // Validate languages passed as argument
@@ -60,48 +65,49 @@ module.exports = class extends BaseGenerator {
             this.languages.forEach((language) => {
                 if (!this.isSupportedLanguage(language)) {
                     this.log('\n');
-                    this.error(chalk.red(`Unsupported language "${language}" passed as argument to language generator.` +
-                        `\nSupported languages: ${_.map(
-                            this.getAllSupportedLanguageOptions(),
-                            o => `\n  ${_.padEnd(o.value, 5)} (${o.name})`
-                        ).join('')}`));
+                    this.error(chalk.red(
+                        `Unsupported language "${language}" passed as argument to language generator.` +
+                        `\nSupported languages: ${_.map(this.getAllSupportedLanguageOptions(),
+                            o => `\n  ${_.padEnd(o.value, 5)} (${o.name})`).join('')}`
+                    ));
                 }
             });
         }
-    }
-
-    initializing() {
-        if (this.languages) {
-            if (this.skipClient) {
-                this.log(chalk.bold(`\nInstalling languages: ${this.languages.join(', ')} for server`));
-            } else if (this.skipServer) {
-                this.log(chalk.bold(`\nInstalling languages: ${this.languages.join(', ')} for client`));
+    },
+    initializing: {
+        getConfig() {
+            if (this.languages) {
+                if (this.skipClient) {
+                    this.log(chalk.bold(`\nInstalling languages: ${this.languages.join(', ')} for server`));
+                } else if (this.skipServer) {
+                    this.log(chalk.bold(`\nInstalling languages: ${this.languages.join(', ')} for client`));
+                } else {
+                    this.log(chalk.bold(`\nInstalling languages: ${this.languages.join(', ')}`));
+                }
+                this.languagesToApply = this.languages || [];
             } else {
-                this.log(chalk.bold(`\nInstalling languages: ${this.languages.join(', ')}`));
+                this.log(chalk.bold('\nLanguages configuration is starting'));
             }
-            this.languagesToApply = this.languages || [];
-        } else {
-            this.log(chalk.bold('\nLanguages configuration is starting'));
+            this.applicationType = this.config.get('applicationType');
+            this.baseName = this.config.get('baseName');
+            this.capitalizedBaseName = _.upperFirst(this.baseName);
+            this.websocket = this.config.get('websocket') === 'no' ? false : this.config.get('websocket');
+            this.databaseType = this.config.get('databaseType');
+            this.searchEngine = this.config.get('searchEngine') === 'no' ? false : this.config.get('searchEngine');
+            this.messageBroker = this.config.get('messageBroker') === 'no' ? false : this.config.get('messageBroker');
+            this.env.options.appPath = this.config.get('appPath') || constants.CLIENT_MAIN_SRC_DIR;
+            this.enableTranslation = this.config.get('enableTranslation');
+            this.enableSocialSignIn = this.config.get('enableSocialSignIn');
+            this.currentLanguages = this.config.get('languages');
+            this.clientFramework = this.config.get('clientFramework');
+            // Make dist dir available in templates
+            if (this.config.get('buildTool') === 'maven') {
+                this.BUILD_DIR = 'target/';
+            } else {
+                this.BUILD_DIR = 'build/';
+            }
         }
-        this.applicationType = this.config.get('applicationType');
-        this.baseName = this.config.get('baseName');
-        this.capitalizedBaseName = _.upperFirst(this.baseName);
-        this.websocket = this.config.get('websocket') === 'no' ? false : this.config.get('websocket');
-        this.databaseType = this.config.get('databaseType');
-        this.searchEngine = this.config.get('searchEngine') === 'no' ? false : this.config.get('searchEngine');
-        this.messageBroker = this.config.get('messageBroker') === 'no' ? false : this.config.get('messageBroker');
-        this.env.options.appPath = this.config.get('appPath') || constants.CLIENT_MAIN_SRC_DIR;
-        this.enableTranslation = this.config.get('enableTranslation');
-        this.enableSocialSignIn = this.config.get('enableSocialSignIn');
-        this.currentLanguages = this.config.get('languages');
-        this.clientFramework = this.config.get('clientFramework');
-        // Make dist dir available in templates
-        if (this.config.get('buildTool') === 'maven') {
-            this.BUILD_DIR = 'target/';
-        } else {
-            this.BUILD_DIR = 'build/';
-        }
-    }
+    },
 
     prompting() {
         if (this.languages) return;
@@ -123,61 +129,59 @@ module.exports = class extends BaseGenerator {
         } else {
             this.log(chalk.red('Translation is disabled for the project. Languages cannot be added.'));
         }
-    }
+    },
 
-    get default() {
-        return {
-            insight() {
-                const insight = this.insight();
-                insight.trackWithEvent('generator', 'languages');
-            },
+    default: {
+        insight() {
+            const insight = this.insight();
+            insight.trackWithEvent('generator', 'languages');
+        },
 
-            getSharedConfigOptions() {
-                if (configOptions.applicationType) {
-                    this.applicationType = configOptions.applicationType;
-                }
-                if (configOptions.baseName) {
-                    this.baseName = configOptions.baseName;
-                }
-                if (configOptions.websocket !== undefined) {
-                    this.websocket = configOptions.websocket;
-                }
-                if (configOptions.databaseType) {
-                    this.databaseType = configOptions.databaseType;
-                }
-                if (configOptions.searchEngine !== undefined) {
-                    this.searchEngine = configOptions.searchEngine;
-                }
-                if (configOptions.messageBroker !== undefined) {
-                    this.messageBroker = configOptions.messageBroker;
-                }
-                if (configOptions.enableTranslation) {
-                    this.enableTranslation = configOptions.enableTranslation;
-                }
-                if (configOptions.nativeLanguage) {
-                    this.nativeLanguage = configOptions.nativeLanguage;
-                }
-                if (configOptions.enableSocialSignIn !== undefined) {
-                    this.enableSocialSignIn = configOptions.enableSocialSignIn;
-                }
-                if (configOptions.skipClient) {
-                    this.skipClient = configOptions.skipClient;
-                }
-                if (configOptions.skipServer) {
-                    this.skipServer = configOptions.skipServer;
-                }
-                if (configOptions.clientFramework) {
-                    this.clientFramework = configOptions.clientFramework;
-                }
-            },
-
-            saveConfig() {
-                if (this.enableTranslation) {
-                    this.config.set('languages', _.union(this.currentLanguages, this.languagesToApply));
-                }
+        getSharedConfigOptions() {
+            if (configOptions.applicationType) {
+                this.applicationType = configOptions.applicationType;
             }
-        };
-    }
+            if (configOptions.baseName) {
+                this.baseName = configOptions.baseName;
+            }
+            if (configOptions.websocket !== undefined) {
+                this.websocket = configOptions.websocket;
+            }
+            if (configOptions.databaseType) {
+                this.databaseType = configOptions.databaseType;
+            }
+            if (configOptions.searchEngine !== undefined) {
+                this.searchEngine = configOptions.searchEngine;
+            }
+            if (configOptions.messageBroker !== undefined) {
+                this.messageBroker = configOptions.messageBroker;
+            }
+            if (configOptions.enableTranslation) {
+                this.enableTranslation = configOptions.enableTranslation;
+            }
+            if (configOptions.nativeLanguage) {
+                this.nativeLanguage = configOptions.nativeLanguage;
+            }
+            if (configOptions.enableSocialSignIn !== undefined) {
+                this.enableSocialSignIn = configOptions.enableSocialSignIn;
+            }
+            if (configOptions.skipClient) {
+                this.skipClient = configOptions.skipClient;
+            }
+            if (configOptions.skipServer) {
+                this.skipServer = configOptions.skipServer;
+            }
+            if (configOptions.clientFramework) {
+                this.clientFramework = configOptions.clientFramework;
+            }
+        },
+
+        saveConfig() {
+            if (this.enableTranslation) {
+                this.config.set('languages', _.union(this.currentLanguages, this.languagesToApply));
+            }
+        }
+    },
 
     writing() {
         const insight = this.insight();
@@ -200,4 +204,4 @@ module.exports = class extends BaseGenerator {
             }
         }
     }
-};
+});

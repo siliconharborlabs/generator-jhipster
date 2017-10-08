@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -140,7 +140,7 @@ public class CacheConfiguration {
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer() {
         return cm -> {
-            <%_ if (!skipUserManagement || authenticationType === 'oauth2') { _%>
+            <%_ if (!skipUserManagement) { _%>
             cm.createCache("users", jcacheConfiguration);
             cm.createCache(<%=packageName%>.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(<%=packageName%>.domain.Authority.class.getName(), jcacheConfiguration);
@@ -498,7 +498,7 @@ public class CacheConfiguration {
                                        JHipsterProperties jHipsterProperties) {
             super(uri, cacheManager, provider);
             // register individual caches to make the stats info available.
-            <%_ if (!skipUserManagement || authenticationType === 'oauth2') { _%>
+            <%_ if (!skipUserManagement) { _%>
             registerPredefinedCache("users", new JCache<Object, Object>(
                 cacheManager.getCache("users").getAdvancedCache(), this,
                 ConfigurationAdapter.create()));

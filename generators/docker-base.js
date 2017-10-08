@@ -2,7 +2,7 @@
 /**
  * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the StackStack project, see http://stackstack.io/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,9 +36,6 @@ module.exports = {
     setAppsFolderPaths,
 };
 
-/**
- * Check Docker
- */
 function checkDocker() {
     const done = this.async();
 
@@ -60,9 +57,6 @@ function checkDocker() {
     });
 }
 
-/**
- * Check Images
- */
 function checkImages() {
     this.log('\nChecking Docker images in applications\' directories...');
 
@@ -86,18 +80,12 @@ function checkImages() {
     });
 }
 
-/**
- * Generate Jwt Secret
- */
 function generateJwtSecret() {
     if (this.jwtSecretKey === undefined) {
         this.jwtSecretKey = crypto.randomBytes(20).toString('hex');
     }
 }
 
-/**
- * Configure Image Names
- */
 function configureImageNames() {
     for (let i = 0; i < this.appsFolders.length; i++) {
         const originalImageName = this.appConfigs[i].baseName.toLowerCase();
@@ -106,9 +94,6 @@ function configureImageNames() {
     }
 }
 
-/**
- * Set Apps Folder Paths
- */
 function setAppsFolderPaths() {
     if (this.applicationType) return;
     this.appsFolderPaths = [];

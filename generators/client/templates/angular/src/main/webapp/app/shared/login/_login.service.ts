@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +22,11 @@ import { JhiLanguageService } from 'ng-jhipster';
 <%_ } _%>
 
 import { Principal } from '../auth/principal.service';
-<%_ if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
+<%_ if (authenticationType === 'oauth2') { _%>
+import { AuthServerProvider } from '../auth/auth-oauth2.service';
+<%_ } else if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
 import { AuthServerProvider } from '../auth/auth-jwt.service';
-<%_ } else if (authenticationType === 'session' || authenticationType === 'oauth2') { _%>
+<%_ } else if (authenticationType === 'session') { _%>
 import { AuthServerProvider } from '../auth/auth-session.service';
 <%_ } _%>
 <%_ if (websocket === 'spring-websocket') { _%>
@@ -35,7 +37,7 @@ import { <%=jhiPrefixCapitalized%>TrackerService } from '../tracker/tracker.serv
 export class LoginService {
 
     constructor(
-        <%_ if (enableTranslation && !(authenticationType === 'oauth2')) { _%>
+        <%_ if (enableTranslation) { _%>
         private languageService: JhiLanguageService,
         <%_ } _%>
         private principal: Principal,
@@ -47,15 +49,6 @@ export class LoginService {
         <%_ } _%>
     ) {}
 
-    <%_ if (authenticationType === 'oauth2') { _%>
-    login() {
-        let port = (location.port ? ':' + location.port : '');
-        if (port === ':9000') {
-            port = ':<%= serverPort %>';
-        }
-        location.href = '//' + location.hostname + port + '/login';
-    }
-    <%_ } else { _%>
     login(credentials, callback?) {
         const cb = callback || function() {};
 
@@ -82,7 +75,6 @@ export class LoginService {
             });
         });
     }
-    <%_ } _%>
     <%_ if (authenticationType === 'jwt') { _%>
 
     loginWithToken(jwt, rememberMe) {

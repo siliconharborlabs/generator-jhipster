@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@
 let _VERSION = '0.0.1-SNAPSHOT'; // This value will be overwritten by Webpack
 let _DEBUG_INFO_ENABLED = true; // This value will be overwritten by Webpack
 <%_ if (authenticationType !== 'uaa') { _%>
-let _SERVER_API_URL = ''; // This value will be overwritten by Webpack
+let _SERVER_API_URL = '/'; // This value will be overwritten by Webpack
 <%_ } _%>
 /* @toreplace VERSION */
 /* @toreplace DEBUG_INFO_ENABLED */

@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,20 +20,15 @@ package <%=packageName%>.web.rest;
 
 import <%=packageName%>.config.Constants;
 import com.codahale.metrics.annotation.Timed;
-<%_ if (authenticationType !== 'oauth2') { _%>
-import <%=packageName%>.domain.User;<% } %>
+import <%=packageName%>.domain.User;
 import <%=packageName%>.repository.UserRepository;<% if (searchEngine === 'elasticsearch') { %>
 import <%=packageName%>.repository.search.UserSearchRepository;<% } %>
 import <%=packageName%>.security.AuthoritiesConstants;
 import <%=packageName%>.service.MailService;
 import <%=packageName%>.service.UserService;
 import <%=packageName%>.service.dto.UserDTO;
-<%_ if (authenticationType !== 'oauth2') { _%>
-import <%=packageName%>.web.rest.errors.BadRequestAlertException;
-import <%=packageName%>.web.rest.errors.EmailAlreadyUsedException;
-import <%=packageName%>.web.rest.errors.LoginAlreadyUsedException;
 import <%=packageName%>.web.rest.vm.ManagedUserVM;
-import <%=packageName%>.web.rest.util.HeaderUtil;<% } %><% if (databaseType === 'sql' || databaseType === 'mongodb') { %>
+import <%=packageName%>.web.rest.util.HeaderUtil;<% if (databaseType === 'sql' || databaseType === 'mongodb') { %>
 import <%=packageName%>.web.rest.util.PaginationUtil;<% } %>
 import io.github.jhipster.web.util.ResponseUtil;
 import io.swagger.annotations.ApiParam;
@@ -48,18 +43,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
-<%_ if (authenticationType !== 'oauth2') { _%>
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-<%_ } _%>
-import java.util.*;
-<%_ if (searchEngine === 'elasticsearch') { _%>
+import java.util.*;<% if (searchEngine === 'elasticsearch') { %>
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
-<%_ } _%>
+import static org.elasticsearch.index.query.QueryBuilders.*;<% } %>
 
 /**
  * REST controller for managing users.
@@ -111,7 +102,6 @@ public class UserResource {
         this.userSearchRepository = userSearchRepository;
         <%_ } _%>
     }
-<%_ if (authenticationType !== 'oauth2') { _%>
 
     /**
      * POST  /users  : Creates a new user.
@@ -123,7 +113,6 @@ public class UserResource {
      * @param managedUserVM the user to create
      * @return the ResponseEntity with status 201 (Created) and with body the new user, or with status 400 (Bad Request) if the login or email is already in use
      * @throws URISyntaxException if the Location URI syntax is incorrect
-     * @throws BadRequestAlertException 400 (Bad Request) if the login or email is already in use
      */
     @PostMapping("/users")
     @Timed
@@ -132,12 +121,18 @@ public class UserResource {
         log.debug("REST request to save User : {}", managedUserVM);
 
         if (managedUserVM.getId() != null) {
-            throw new BadRequestAlertException("A new user cannot already have an ID", ENTITY_NAME, "idexists");
+            return ResponseEntity.badRequest()
+                .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new user cannot already have an ID"))
+                .body(null);
         // Lowercase the user login before comparing with database
         } else if (userRepository.findOneByLogin(managedUserVM.getLogin().toLowerCase()).isPresent()) {
-            throw new LoginAlreadyUsedException();
-        } else if (userRepository.findOneByEmailIgnoreCase(managedUserVM.getEmail()).isPresent()) {
-            throw new EmailAlreadyUsedException();
+            return ResponseEntity.badRequest()
+                .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "userexists", "Login already in use"))
+                .body(null);
+        } else if (userRepository.findOneByEmail(managedUserVM.getEmail()).isPresent()) {
+            return ResponseEntity.badRequest()
+                .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "emailexists", "Email already in use"))
+                .body(null);
         } else {
             User newUser = userService.createUser(managedUserVM);
             mailService.sendCreationEmail(newUser);
@@ -151,29 +146,29 @@ public class UserResource {
      * PUT  /users : Updates an existing User.
      *
      * @param managedUserVM the user to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated user
-     * @throws EmailAlreadyUsedException 400 (Bad Request) if the email is already in use
-     * @throws LoginAlreadyUsedException 400 (Bad Request) if the login is already in use
+     * @return the ResponseEntity with status 200 (OK) and with body the updated user,
+     * or with status 400 (Bad Request) if the login or email is already in use,
+     * or with status 500 (Internal Server Error) if the user couldn't be updated
      */
     @PutMapping("/users")
     @Timed
     @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<UserDTO> updateUser(@Valid @RequestBody ManagedUserVM managedUserVM) {
         log.debug("REST request to update User : {}", managedUserVM);
-        Optional<User> existingUser = userRepository.findOneByEmailIgnoreCase(managedUserVM.getEmail());
+        Optional<User> existingUser = userRepository.findOneByEmail(managedUserVM.getEmail());
         if (existingUser.isPresent() && (!existingUser.get().getId().equals(managedUserVM.getId()))) {
-            throw new EmailAlreadyUsedException();
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "emailexists", "Email already in use")).body(null);
         }
         existingUser = userRepository.findOneByLogin(managedUserVM.getLogin().toLowerCase());
         if (existingUser.isPresent() && (!existingUser.get().getId().equals(managedUserVM.getId()))) {
-            throw new LoginAlreadyUsedException();
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "userexists", "Login already in use")).body(null);
         }
         Optional<UserDTO> updatedUser = userService.updateUser(managedUserVM);
 
         return ResponseUtil.wrapOrNotFound(updatedUser,
             HeaderUtil.createAlert(<% if(enableTranslation) { %>"userManagement.updated"<% } else { %>"A user is updated with identifier " + managedUserVM.getLogin()<% } %>, managedUserVM.getLogin()));
     }
-<% } %>
+
     /**
      * GET  /users : get all users.
      *<% if (databaseType === 'sql' || databaseType === 'mongodb') { %>
@@ -216,7 +211,6 @@ public class UserResource {
             userService.getUserWithAuthoritiesByLogin(login)
                 .map(UserDTO::new));
     }
-<%_ if (authenticationType !== 'oauth2') { _%>
 
     /**
      * DELETE /users/:login : delete the "login" User.
@@ -231,7 +225,7 @@ public class UserResource {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert(<% if(enableTranslation) {%> "userManagement.deleted"<% } else { %> "A user is deleted with identifier " + login<% } %>, login)).build();
-    }<%_ } _%><% if (searchEngine === 'elasticsearch') { %>
+    }<% if (searchEngine === 'elasticsearch') { %>
 
     /**
      * SEARCH  /_search/users/:query : search for the User corresponding

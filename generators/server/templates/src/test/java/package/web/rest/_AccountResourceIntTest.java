@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,72 +17,52 @@
  limitations under the License.
 -%>
 package <%=packageName%>.web.rest;
-import <%=packageName%>.config.Constants;
-<%_ if (databaseType === 'cassandra') { _%>
-import <%=packageName%>.AbstractCassandraTest;
-<%_ } _%>
+<% if (databaseType === 'cassandra') { %>
+import <%=packageName%>.AbstractCassandraTest;<% } %>
 import <%=packageName%>.<%= mainClass %>;<% if (databaseType === 'sql' || databaseType === 'mongodb') { %>
 import <%=packageName%>.domain.Authority;<% } %><% if (authenticationType === 'session') { %>
 import <%=packageName%>.domain.PersistentToken;<% } %>
-import <%=packageName%>.domain.User;<% if (authenticationType !== 'oauth2' && (databaseType === 'sql' || databaseType === 'mongodb')) { %>
+import <%=packageName%>.domain.User;<% if (databaseType === 'sql' || databaseType === 'mongodb') { %>
 import <%=packageName%>.repository.AuthorityRepository;<% } %>
 <%_ if (authenticationType === 'session') { _%>
 import <%=packageName%>.repository.PersistentTokenRepository;
 <%_ } _%>
 import <%=packageName%>.repository.UserRepository;
 import <%=packageName%>.security.AuthoritiesConstants;
-<%_ if (authenticationType !== 'oauth2') { _%>
 import <%=packageName%>.service.MailService;
+import <%=packageName%>.service.UserService;
 import <%=packageName%>.service.dto.UserDTO;
-<%_ } _%>
-import <%=packageName%>.web.rest.errors.ExceptionTranslator;
-<%_ if (authenticationType !== 'oauth2') { _%>
 import <%=packageName%>.web.rest.vm.KeyAndPasswordVM;
 import <%=packageName%>.web.rest.vm.ManagedUserVM;
-<%_ } _%>
-import <%=packageName%>.service.UserService;
-<%_ if (authenticationType !== 'oauth2') { _%>
 import org.apache.commons.lang3.RandomStringUtils;
-<%_ } _%>
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-<%_ if (authenticationType !== 'oauth2') { _%>
 import org.mockito.Mock;
-<%_ } _%>
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-<%_ if (authenticationType === 'oauth2') { _%>
-import org.springframework.boot.test.mock.mockito.MockBean;
-<%_ } _%>
 import org.springframework.http.MediaType;
-<%_ if (authenticationType !== 'oauth2') { _%>
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
-<%_ } _%>
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;<% if (databaseType === 'sql' && authenticationType !== 'oauth2') { %>
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;<% if (databaseType === 'sql') { %>
 import org.springframework.transaction.annotation.Transactional;<% } %>
-<%_ if (authenticationType === 'oauth2') { _%>
-import org.springframework.web.context.WebApplicationContext;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
-<% } else { %>
+
 import java.time.Instant;<% if (databaseType === 'sql' || databaseType === 'mongodb') { %>
 import java.time.LocalDate;<% } %>
-<%_ } _%>
 import java.util.*;
-<%_ if (authenticationType !== 'oauth2') { _%>
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.doNothing;
-<%_ } _%>
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -96,72 +76,51 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
 
     @Autowired
     private UserRepository userRepository;
-<%_ if (authenticationType !== 'oauth2' && (databaseType === 'sql' || databaseType === 'mongodb')) { _%>
+<%_ if (databaseType === 'sql' || databaseType === 'mongodb') { _%>
 
     @Autowired
     private AuthorityRepository authorityRepository;
 <%_ } _%>
-<%_ if (authenticationType !== 'oauth2') { _%>
 
     @Autowired
     private UserService userService;
-<%_ } _%>
 <%_ if (authenticationType === 'session') { _%>
 
     @Autowired
     private PersistentTokenRepository persistentTokenRepository;
 <%_ } _%>
-<%_ if (authenticationType !== 'oauth2') { _%>
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private HttpMessageConverter[] httpMessageConverters;
-<%_ } _%>
 
-    @Autowired
-    private ExceptionTranslator exceptionTranslator;
-
-    <% if (authenticationType === 'oauth2') { %>@MockBean<% } else { %>@Mock<% } %>
+    @Mock
     private UserService mockUserService;
-<%_ if (authenticationType !== 'oauth2') { _%>
 
     @Mock
     private MailService mockMailService;
 
-    private MockMvc restMvc;
-<%_ } _%>
-
     private MockMvc restUserMockMvc;
-<%_ if (authenticationType === 'oauth2') { _%>
 
-    @Autowired
-    private WebApplicationContext context;
-<%_ } _%>
+    private MockMvc restMvc;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        <%_ if (authenticationType !== 'oauth2') { _%>
         doNothing().when(mockMailService).sendActivationEmail(anyObject());
-        <%_ } _%>
 
-        <%_ if (authenticationType !== 'oauth2') { _%>
         AccountResource accountResource =
             new AccountResource(userRepository, userService, mockMailService<% if (authenticationType === 'session') { %>, persistentTokenRepository<% } %>);
-        <%_ } _%>
+
         AccountResource accountUserMockResource =
-            new AccountResource(userRepository, mockUserService<% if (authenticationType !== 'oauth2') { %>, mockMailService<% } %><% if (authenticationType === 'session') { %>, persistentTokenRepository<% } %>);
-        <%_ if (authenticationType !== 'oauth2') { _%>
+            new AccountResource(userRepository, mockUserService, mockMailService<% if (authenticationType === 'session') { %>, persistentTokenRepository<% } %>);
+
         this.restMvc = MockMvcBuilders.standaloneSetup(accountResource)
             .setMessageConverters(httpMessageConverters)
-            .setControllerAdvice(exceptionTranslator)
             .build();
-        <%_ } _%>
-        this.restUserMockMvc = MockMvcBuilders.standaloneSetup(accountUserMockResource)
-            .setControllerAdvice(exceptionTranslator)
-            .build();
+        this.restUserMockMvc = MockMvcBuilders.standaloneSetup(accountUserMockResource).build();
     }
 
     @Test
@@ -204,17 +163,8 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
         user.setLangKey("en");
         user.setAuthorities(authorities);
         when(mockUserService.getUserWithAuthorities()).thenReturn(user);
-        <%_ if (authenticationType === 'oauth2') { _%>
-
-        // create security-aware mockMvc
-        restUserMockMvc = MockMvcBuilders
-            .webAppContextSetup(context)
-            .apply(springSecurity())
-            .build();
-        <%_ } _%>
 
         restUserMockMvc.perform(get("/api/account")
-            <%_ if (authenticationType === 'oauth2') { _%>.with(user(user.getLogin()).roles("ADMIN"))<%_ } _%>
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
@@ -237,7 +187,6 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isInternalServerError());
     }
-<%_ if (authenticationType !== 'oauth2') { _%>
 
     @Test<% if (databaseType === 'sql') { %>
     @Transactional<% } %>
@@ -253,7 +202,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -286,7 +235,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -301,7 +250,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
                 .content(TestUtil.convertObjectToJsonBytes(invalidUser)))
             .andExpect(status().isBadRequest());
 
-        Optional<User> user = userRepository.findOneByEmailIgnoreCase("funky@example.com");
+        Optional<User> user = userRepository.findOneByEmail("funky@example.com");
         assertThat(user.isPresent()).isFalse();
     }
 
@@ -319,7 +268,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -352,7 +301,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -385,7 +334,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -419,7 +368,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -446,7 +395,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
                 .content(TestUtil.convertObjectToJsonBytes(duplicatedUser)))
             .andExpect(status().is4xxClientError());
 
-        Optional<User> userDup = userRepository.findOneByEmailIgnoreCase("alicejr@example.com");
+        Optional<User> userDup = userRepository.findOneByEmail("alicejr@example.com");
         assertThat(userDup.isPresent()).isFalse();
     }
 
@@ -465,7 +414,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -492,16 +441,6 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
                 .content(TestUtil.convertObjectToJsonBytes(duplicatedUser)))
             .andExpect(status().is4xxClientError());
 
-        // Duplicate email - with uppercase email address
-        final ManagedUserVM userWithUpperCaseEmail = new ManagedUserVM(validUser.getId(), "johnjr", validUser.getPassword(), validUser.getLogin(), validUser.getLastName(),
-                validUser.getEmail().toUpperCase(), true<% if (databaseType === 'mongodb' || databaseType === 'sql') { %>, validUser.getImageUrl()<% } %>, validUser.getLangKey()<% if (databaseType === 'mongodb' || databaseType === 'sql') { %>, validUser.getCreatedBy(), validUser.getCreatedDate(), validUser.getLastModifiedBy(), validUser.getLastModifiedDate()<% } %>, validUser.getAuthorities());
-
-        restMvc.perform(
-            post("/api/register")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(userWithUpperCaseEmail)))
-            .andExpect(status().is4xxClientError());
-
         Optional<User> userDup = userRepository.findOneByLogin("johnjr");
         assertThat(userDup.isPresent()).isFalse();
     }
@@ -520,7 +459,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -596,7 +535,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -648,7 +587,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -664,7 +603,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
                 .content(TestUtil.convertObjectToJsonBytes(userDTO)))
             .andExpect(status().isBadRequest());
 
-        assertThat(userRepository.findOneByEmailIgnoreCase("invalid email")).isNotPresent();
+        assertThat(userRepository.findOneByEmail("invalid email")).isNotPresent();
     }
 
     @Test<% if (databaseType === 'sql') { %>
@@ -703,7 +642,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -748,7 +687,7 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             "http://placehold.it/50x50", //imageUrl
             <%_ } _%>
-            Constants.DEFAULT_LANGUAGE,// langKey
+            "<%= nativeLanguage %>",                   // langKey
             <%_ if (databaseType === 'mongodb' || databaseType === 'sql') { _%>
             null,                   // createdBy
             null,                   // createdDate
@@ -934,24 +873,6 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
             .andExpect(status().isOk());
     }
 
-    @Test<% if (databaseType === 'sql') { %>
-    @Transactional<% } %>
-    public void testRequestPasswordResetUpperCaseEmail() throws Exception {
-        User user = new User();
-        <%_ if (databaseType === 'cassandra') { _%>
-        user.setId(UUID.randomUUID().toString());
-        <%_ } _%>
-        user.setPassword(RandomStringUtils.random(60));
-        user.setActivated(true);
-        user.setLogin("password-reset");
-        user.setEmail("password-reset@example.com");
-        userRepository.save<% if (databaseType === 'sql') { %>AndFlush<% } %>(user);
-
-        restMvc.perform(post("/api/account/reset-password/init")
-            .content("password-reset@EXAMPLE.COM"))
-            .andExpect(status().isOk());
-    }
-
     @Test
     public void testRequestPasswordResetWrongEmail() throws Exception {
         restMvc.perform(
@@ -1030,5 +951,4 @@ public class AccountResourceIntTest <% if (databaseType === 'cassandra') { %>ext
                 .content(TestUtil.convertObjectToJsonBytes(keyAndPassword)))
             .andExpect(status().isInternalServerError());
     }
-<%_ } _%>
 }

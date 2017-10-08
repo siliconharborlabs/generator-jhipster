@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,6 @@ import org.springframework.dao.ConcurrencyFailureException;
 <%_ } _%>
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.support.MissingServletRequestPartException;
@@ -73,11 +72,6 @@ public class ExceptionTranslatorTestController {
     @GetMapping("/test/access-denied")
     public void accessdenied() {
         throw new AccessDeniedException("test access denied!");
-    }
-
-    @GetMapping("/test/unauthorized")
-    public void unauthorized() {
-        throw new BadCredentialsException("test authentication failed!");
     }
 
     @GetMapping("/test/response-status")

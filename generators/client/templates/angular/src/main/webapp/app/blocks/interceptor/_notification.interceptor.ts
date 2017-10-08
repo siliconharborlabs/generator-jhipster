@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,6 @@ export class NotificationInterceptor extends JhiHttpInterceptor {
 
     private alertService: JhiAlertService;
 
-    // tslint:disable-next-line: no-unused-variable
     constructor(private injector: Injector) {
         super();
         setTimeout(() => this.alertService = injector.get(JhiAlertService));

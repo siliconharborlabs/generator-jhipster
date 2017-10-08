@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,13 +25,13 @@ const prefix = '<%= TEST_SRC_DIR %>'.replace(/[^/]+/g,'..');
 
 var webbrowserDriver= '';
 if (os.platform() === 'win32') {
-    webbrowserDriver = prefix + 'node_modules/webdriver-manager/selenium/chromedriver_2.33.exe';
+    webbrowserDriver = prefix + 'node_modules/webdriver-manager/selenium/chromedriver_2.26.exe';
 } else {
-    webbrowserDriver = prefix + 'node_modules/webdriver-manager/selenium/chromedriver_2.33';
+    webbrowserDriver = prefix + 'node_modules/webdriver-manager/selenium/chromedriver_2.26';
 }
 
 exports.config = {
-    seleniumServerJar: prefix + 'node_modules/webdriver-manager/selenium/selenium-server-standalone-3.6.0.jar',
+    seleniumServerJar: prefix + 'node_modules/webdriver-manager/selenium/selenium-server-standalone-2.53.1.jar',
     chromeDriver: webbrowserDriver,
     allScriptsTimeout: 20000,
 
@@ -43,9 +43,8 @@ exports.config = {
 
     capabilities: {
         'browserName': 'chrome',
-        chromeOptions: {
-            args: ["--headless", "--disable-gpu"]
-        }
+        'phantomjs.binary.path': require('phantomjs-prebuilt').path,
+        'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
     },
 
     directConnect: true,

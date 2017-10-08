@@ -1,7 +1,7 @@
 /**
  * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the StackStack project, see http://stackstack.io/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -143,7 +143,7 @@ const files = {
             ]
         },
         {
-            condition: generator => generator.authenticationType === 'jwt',
+            condition: generator => generator.authenticationType === 'oauth2' || generator.authenticationType === 'jwt' || generator.authenticationType === 'uaa',
             path: ANGULAR_DIR,
             templates: [
                 'blocks/interceptor/_auth.interceptor.ts'
@@ -215,7 +215,6 @@ const files = {
     angularAccountModule: [
         {
             path: ANGULAR_DIR,
-            condition: generator => generator.authenticationType !== 'oauth2',
             templates: [
                 'account/_index.ts',
                 { file: 'account/_account.route.ts', method: 'processJs' },
@@ -384,7 +383,6 @@ const files = {
                 'shared/_shared.module.ts',
                 'shared/_shared-libs.module.ts',
                 'shared/_shared-common.module.ts',
-                'shared/constants/_error.constants.ts',
                 'shared/constants/_pagination.constants.ts',
                 // models
                 'shared/model/_response-wrapper.model.ts',
@@ -392,20 +390,13 @@ const files = {
                 'shared/model/_base-entity.ts',
                 'shared/user/_account.model.ts',
                 // login
+                'shared/login/_login.component.ts',
+                { file: 'shared/login/_login.component.html', method: 'processHtml' },
                 'shared/login/_login.service.ts',
+                'shared/login/_login-modal.service.ts',
                 // alert service code
                 'shared/alert/_alert.component.ts',
                 'shared/alert/_alert-error.component.ts'
-            ]
-        },
-        {
-            path: ANGULAR_DIR,
-            condition: generator => generator.authenticationType !== 'oauth2',
-            templates: [
-                // login
-                'shared/login/_login.component.ts',
-                { file: 'shared/login/_login.component.html', method: 'processHtml' },
-                'shared/login/_login-modal.service.ts'
             ]
         },
         {
@@ -418,7 +409,7 @@ const files = {
             ]
         },
         {
-            condition: generator => !generator.skipUserManagement || generator.authenticationType === 'oauth2',
+            condition: generator => !generator.skipUserManagement,
             path: ANGULAR_DIR,
             templates: [
                 'shared/user/_user.model.ts',
@@ -439,6 +430,13 @@ const files = {
             ]
         },
         {
+            condition: generator => generator.authenticationType === 'oauth2',
+            path: ANGULAR_DIR,
+            templates: [
+                'shared/auth/_auth-oauth2.service.ts'
+            ]
+        },
+        {
             condition: generator => generator.authenticationType === 'jwt' || generator.authenticationType === 'uaa',
             path: ANGULAR_DIR,
             templates: [
@@ -446,7 +444,7 @@ const files = {
             ]
         },
         {
-            condition: generator => generator.authenticationType === 'session' || generator.authenticationType === 'oauth2',
+            condition: generator => generator.authenticationType === 'session',
             path: ANGULAR_DIR,
             templates: [
                 'shared/auth/_auth-session.service.ts'
@@ -460,24 +458,18 @@ const files = {
                 '_karma.conf.js',
                 'spec/_entry.ts',
                 'spec/_test.module.ts',
-                'spec/app/admin/health/_health.component.spec.ts',
-                'spec/helpers/_spyobject.ts',
-                'spec/helpers/_mock-account.service.ts',
-                'spec/helpers/_mock-principal.service.ts',
-                'spec/helpers/_mock-route.service.ts'
-            ]
-        },
-        {
-            condition: generator => generator.authenticationType !== 'oauth2',
-            path: TEST_SRC_DIR,
-            templates: [
                 'spec/app/account/activate/_activate.component.spec.ts',
                 'spec/app/account/password/_password.component.spec.ts',
                 'spec/app/account/password/_password-strength-bar.component.spec.ts',
                 'spec/app/account/password-reset/init/_password-reset-init.component.spec.ts',
                 'spec/app/account/password-reset/finish/_password-reset-finish.component.spec.ts',
                 'spec/app/account/register/_register.component.spec.ts',
-                'spec/app/account/settings/_settings.component.spec.ts'
+                'spec/app/account/settings/_settings.component.spec.ts',
+                'spec/app/admin/health/_health.component.spec.ts',
+                'spec/helpers/_spyobject.ts',
+                'spec/helpers/_mock-account.service.ts',
+                'spec/helpers/_mock-principal.service.ts',
+                'spec/helpers/_mock-route.service.ts'
             ]
         },
         {

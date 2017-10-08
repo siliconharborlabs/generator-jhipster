@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,12 +31,16 @@ export class AuthInterceptor extends JhiHttpInterceptor {
     }
 
     requestIntercept(options?: RequestOptionsArgs): RequestOptionsArgs {
-        if (!options || !options.url || /^http/.test(options.url)) return options;
-
         const token = this.localStorage.retrieve('authenticationToken') || this.sessionStorage.retrieve('authenticationToken');
+        <%_ if (authenticationType === 'oauth2') { _%>
+        if (token && token.expires_at && token.expires_at > new Date().getTime()) {
+            options.headers.append('Authorization', 'Bearer ' + token.access_token);
+        }
+        <%_ } else if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
         if (!!token) {
             options.headers.append('Authorization', 'Bearer ' + token);
         }
+        <%_ } _%>
         return options;
     }
 

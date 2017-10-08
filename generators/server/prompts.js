@@ -1,7 +1,7 @@
 /**
  * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the StackStack project, see http://stackstack.io/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -68,21 +68,21 @@ function askForServerSideOpts(meta) {
             type: 'list',
             name: 'serviceDiscoveryType',
             message: response => this.getNumberedQuestion(
-                'Which service discovery server do you want to use?',
+                'Do you want to use the StackStack Registry to configure, monitor and scale your microservices and gateways?',
                 applicationType === 'gateway' || applicationType === 'microservice' || applicationType === 'uaa'
             ),
             choices: [
                 {
                     value: 'eureka',
-                    name: 'StackStack Registry (uses Eureka, provides Spring Cloud Config support and monitoring dashboards)'
+                    name: 'Yes'
                 },
                 {
                     value: 'consul',
-                    name: 'Consul'
+                    name: '[BETA] No, use Consul as an alternative solution (uses Spring Cloud Consul)'
                 },
                 {
                     value: false,
-                    name: 'No service discovery'
+                    name: 'No'
                 }
             ],
             default: 'eureka'
@@ -123,7 +123,7 @@ function askForServerSideOpts(meta) {
                 },
                 {
                     value: 'oauth2',
-                    name: 'OAuth 2.0 / OIDC Authentication (stateful, works with Keycloak and Okta)'
+                    name: 'OAuth2 Authentication (stateless, with an OAuth2 server implementation)'
                 }
             ],
             default: 0
@@ -143,7 +143,7 @@ function askForServerSideOpts(meta) {
                 },
                 {
                     value: 'uaa',
-                    name: 'Authentication with StackStack UAA server (the server must be generated separately)'
+                    name: '[BETA] Authentication with StackStack UAA server (the server must be generated separately)'
                 }
             ],
             default: 0
@@ -198,7 +198,9 @@ function askForServerSideOpts(meta) {
             when: response => response.authenticationType === 'oauth2' && !response.databaseType,
             type: 'list',
             name: 'databaseType',
-            message: response => this.getNumberedQuestion('Which *type* of database would you like to use?', response.authenticationType === 'oauth2' && !response.databaseType),
+            message: response => this.getNumberedQuestion(
+                'Which *type* of database would you like to use?', response.authenticationType === 'oauth2' && !response.databaseType
+            ),
             choices: [
                 {
                     value: 'sql',
@@ -268,7 +270,9 @@ function askForServerSideOpts(meta) {
             when: response => (response.databaseType === 'sql' && response.prodDatabaseType === 'mariadb'),
             type: 'list',
             name: 'devDatabaseType',
-            message: response => this.getNumberedQuestion('Which *development* database would you like to use?', response.databaseType === 'sql' && response.prodDatabaseType === 'mariadb'),
+            message: response => this.getNumberedQuestion(
+                'Which *development* database would you like to use?', response.databaseType === 'sql' && response.prodDatabaseType === 'mariadb'
+            ),
             choices: [
                 {
                     value: 'h2Disk',
@@ -472,38 +476,50 @@ function askForOptionalItems(meta) {
     const choices = [];
     const defaultChoice = [];
     if (this.databaseType !== 'cassandra' && applicationType === 'monolith' && (this.authenticationType === 'session' || this.authenticationType === 'jwt')) {
-        choices.push({
-            name: 'Social login (Google, Facebook, Twitter)',
-            value: 'enableSocialSignIn:true'
-        });
+        choices.push(
+            {
+                name: 'Social login (Google, Facebook, Twitter)',
+                value: 'enableSocialSignIn:true'
+            }
+        );
     }
     if (this.databaseType === 'sql') {
-        choices.push({
-            name: 'Search engine using Elasticsearch',
-            value: 'searchEngine:elasticsearch'
-        });
+        choices.push(
+            {
+                name: 'Search engine using Elasticsearch',
+                value: 'searchEngine:elasticsearch'
+            }
+        );
     }
     if ((applicationType === 'monolith' || applicationType === 'gateway') &&
             (this.hibernateCache === 'no' || this.hibernateCache === 'hazelcast')) {
-        choices.push({
-            name: 'Clustered HTTP sessions using Hazelcast',
-            value: 'clusteredHttpSession:hazelcast'
-        });
+        choices.push(
+            {
+                name: 'Clustered HTTP sessions using Hazelcast',
+                value: 'clusteredHttpSession:hazelcast'
+            }
+        );
     }
     if (applicationType === 'monolith' || applicationType === 'gateway') {
-        choices.push({
-            name: 'WebSockets using Spring Websocket',
-            value: 'websocket:spring-websocket'
-        });
+        choices.push(
+            {
+                name: 'WebSockets using Spring Websocket',
+                value: 'websocket:spring-websocket'
+            }
+        );
     }
-    choices.push({
-        name: 'API first development using swagger-codegen',
-        value: 'enableSwaggerCodegen:true'
-    });
-    choices.push({
-        name: 'Asynchronous messages using Apache Kafka',
-        value: 'messageBroker:kafka'
-    });
+    choices.push(
+        {
+            name: 'API first development using swagger-codegen',
+            value: 'enableSwaggerCodegen:true'
+        }
+    );
+    choices.push(
+        {
+            name: '[BETA] Asynchronous messages using Apache Kafka',
+            value: 'messageBroker:kafka'
+        }
+    );
 
     const PROMPTS = {
         type: 'checkbox',

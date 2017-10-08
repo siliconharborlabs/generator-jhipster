@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,19 +64,6 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
                 { loader: 'angular2-template-loader' }
             ],
             exclude: ['node_modules/generator-jhipster']
-        },
-        {
-            test: /\.ts$/,
-            use: [
-                {
-                    loader: 'ngc-webpack',
-                    options: {
-                        disable: false,
-                        tsConfigPath: 'tsconfig-aot.json'
-                    }
-                }
-            ],
-            exclude: /(polyfills\.ts|vendor\.ts|Reflect\.ts)/
         },
         <%_ if (useSass) { _%>
         {

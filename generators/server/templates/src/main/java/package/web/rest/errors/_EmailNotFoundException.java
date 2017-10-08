@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,13 +16,15 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -%>
-package <%=packageName%>.web.rest.errors;
+package <%=packageName%>.repository;
 
-import org.zalando.problem.AbstractThrowableProblem;
-import org.zalando.problem.Status;
 
-public class EmailNotFoundException extends AbstractThrowableProblem {
-    public EmailNotFoundException() {
-        super(ErrorConstants.EMAIL_NOT_FOUND_TYPE, "Email address not registered", Status.BAD_REQUEST);
-    }
+import <%=packageName%>.domain.OAuth2AuthenticationClientDetails;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import java.util.List;
+
+public interface OAuth2ClientDetailsRepository extends MongoRepository<OAuth2AuthenticationClientDetails, String> {
+
+    OAuth2AuthenticationClientDetails findOneByClientId(String clientId);
 }

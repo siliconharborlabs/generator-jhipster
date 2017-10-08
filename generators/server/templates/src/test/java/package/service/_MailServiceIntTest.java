@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,6 @@
  limitations under the License.
 -%>
 package <%=packageName%>.service;
-import <%=packageName%>.config.Constants;
 <% if (databaseType === 'cassandra') { %>
 import <%=packageName%>.AbstractCassandraTest;<% } %>
 import <%=packageName%>.<%= mainClass %>;
@@ -151,12 +150,11 @@ public class MailServiceIntTest <% if (databaseType === 'cassandra') { %>extends
         assertThat(message.getContent().toString()).isEqualTo("<html>test title, http://127.0.0.1:8080, john</html>\n");
         assertThat(message.getDataHandler().getContentType()).isEqualTo("text/html;charset=UTF-8");
     }
-    <%_ if (authenticationType !== 'oauth2') { _%>
 
     @Test
     public void testSendActivationEmail() throws Exception {
         User user = new User();
-        user.setLangKey(Constants.DEFAULT_LANGUAGE);
+        user.setLangKey("<%= nativeLanguage %>");
         user.setLogin("john");
         user.setEmail("john.doe@example.com");
         mailService.sendActivationEmail(user);
@@ -171,7 +169,7 @@ public class MailServiceIntTest <% if (databaseType === 'cassandra') { %>extends
     @Test
     public void testCreationEmail() throws Exception {
         User user = new User();
-        user.setLangKey(Constants.DEFAULT_LANGUAGE);
+        user.setLangKey("<%= nativeLanguage %>");
         user.setLogin("john");
         user.setEmail("john.doe@example.com");
         mailService.sendCreationEmail(user);
@@ -186,7 +184,7 @@ public class MailServiceIntTest <% if (databaseType === 'cassandra') { %>extends
     @Test
     public void testSendPasswordResetMail() throws Exception {
         User user = new User();
-        user.setLangKey(Constants.DEFAULT_LANGUAGE);
+        user.setLangKey("<%= nativeLanguage %>");
         user.setLogin("john");
         user.setEmail("john.doe@example.com");
         mailService.sendPasswordResetMail(user);
@@ -197,7 +195,6 @@ public class MailServiceIntTest <% if (databaseType === 'cassandra') { %>extends
         assertThat(message.getContent().toString()).isNotEmpty();
         assertThat(message.getDataHandler().getContentType()).isEqualTo("text/html;charset=UTF-8");
     }
-    <%_ } _%>
 
     @Test
     public void testSendEmailWithException() throws Exception {

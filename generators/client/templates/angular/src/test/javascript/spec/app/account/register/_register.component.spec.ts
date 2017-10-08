@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import { JhiLanguageService } from 'ng-jhipster';
 import { MockLanguageService } from '../../../helpers/mock-language.service';
 <%_ } _%>
 import { <%=angularXAppName%>TestModule } from '../../../test.module';
-import { LoginModalService, EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from '../../../../../../main/webapp/app/shared';
+import { LoginModalService } from '../../../../../../main/webapp/app/shared';
 import { Register } from '../../../../../../main/webapp/app/account/register/register.service';
 import { RegisterComponent } from '../../../../../../main/webapp/app/account/register/register.component';
 
@@ -102,9 +102,7 @@ describe('Component Tests', () => {
                 fakeAsync((service: Register) => {
                     spyOn(service, 'save').and.returnValue(Observable.throw({
                         status: 400,
-                        json: function() {
-                            return {type : LOGIN_ALREADY_USED_TYPE}
-                        }
+                        _body: 'login already in use'
                     }));
                     comp.registerAccount.password = comp.confirmPassword = 'password';
 
@@ -123,9 +121,7 @@ describe('Component Tests', () => {
                 fakeAsync((service: Register) => {
                     spyOn(service, 'save').and.returnValue(Observable.throw({
                         status: 400,
-                        json: function() {
-                            return {type : EMAIL_ALREADY_USED_TYPE}
-                        }
+                        _body: 'email address already in use'
                     }));
                     comp.registerAccount.password = comp.confirmPassword = 'password';
 

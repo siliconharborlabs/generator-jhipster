@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,11 +56,7 @@ describe('<%= entityClass %> e2e test', () => {
         browser.get('/');
         browser.waitForAngular();
         navBarPage = new NavBarPage();
-        <%_ if (authenticationType === 'oauth2') { _%>
-        navBarPage.getSignInPage().loginWithOAuth('admin', 'admin');
-        <%_ } else { _%>
         navBarPage.getSignInPage().autoSignInUsing('admin', 'admin');
-        <%_ } _%>
         browser.waitForAngular();
     });
 

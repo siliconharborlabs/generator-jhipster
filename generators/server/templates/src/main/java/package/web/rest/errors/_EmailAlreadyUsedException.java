@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,10 +16,12 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -%>
-package <%=packageName%>.web.rest.errors;
+package <%=packageName%>.repository;
 
-public class EmailAlreadyUsedException extends BadRequestAlertException {
-    public EmailAlreadyUsedException() {
-        super(ErrorConstants.EMAIL_ALREADY_USED_TYPE, "Email address already in use", "userManagement", "emailexists");
-    }
+import <%=packageName%>.domain.OAuth2AuthenticationCode;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface OAuth2CodeRepository extends MongoRepository<OAuth2AuthenticationCode, String> {
+
+    OAuth2AuthenticationCode findOneByCode(String code);
 }

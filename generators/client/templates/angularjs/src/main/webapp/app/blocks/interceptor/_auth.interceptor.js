@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,8 +33,6 @@
         return service;
 
         function request (config) {
-            if (!config || !config.url || /^http/.test(config.url)) return config;
-
             /*jshint camelcase: false */
             config.headers = config.headers || {};
             var token = $localStorage.authenticationToken || $sessionStorage.authenticationToken;
@@ -43,7 +41,7 @@
                 config.headers.Authorization = 'Bearer ' + token.access_token;
             }
             <%_ } _%>
-            <%_ if (authenticationType === 'jwt') { _%>
+            <%_ if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
             if (token) {
                 config.headers.Authorization = 'Bearer ' + token;
             }

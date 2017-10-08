@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,16 +16,17 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -%>
-export * from './constants/error.constants';
 export * from './constants/pagination.constants';
 export * from './alert/alert.component';
 export * from './alert/alert-error.component';
 export * from './auth/csrf.service';
 export * from './auth/state-storage.service';
 export * from './auth/account.service';
-<%_ if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
+<%_ if (authenticationType === 'oauth2') { _%>
+export * from './auth/auth-oauth2.service';
+<%_ } else if (authenticationType === 'jwt' || authenticationType === 'uaa') { _%>
 export * from './auth/auth-jwt.service';
-<%_ } else if (authenticationType === 'session' || authenticationType === 'oauth2') { _%>
+<%_ } else if (authenticationType === 'session') { _%>
 export * from './auth/auth-session.service';
 <%_ } _%>
 export * from './auth/principal.service';
@@ -39,13 +40,11 @@ export * from './language/find-language-from-key.pipe';
 <%_ if (websocket === 'spring-websocket') { _%>
 export * from './tracker/tracker.service';
 <%_ } _%>
-<%_ if (authenticationType !== 'oauth2') { _%>
 export * from './login/login.component';
-export * from './login/login-modal.service';
-<%_ } _%>
 export * from './login/login.service';
+export * from './login/login-modal.service';
 export * from './user/account.model';
-<%_ if (!skipUserManagement || authenticationType === 'oauth2') { _%>
+<%_ if (!skipUserManagement) { _%>
 export * from './user/user.model';
 export * from './user/user.service';
 <%_ } _%>

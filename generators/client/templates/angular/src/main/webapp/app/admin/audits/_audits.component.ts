@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +23,7 @@ import { JhiParseLinks } from 'ng-jhipster';
 import { Audit } from './audit.model';
 import { AuditsService } from './audits.service';
 import { ITEMS_PER_PAGE } from '../../shared';
+import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
 
 @Component({
   selector: '<%=jhiPrefix%>-audit',
@@ -38,17 +39,17 @@ export class AuditsComponent implements OnInit {
     reverse: boolean;
     toDate: string;
     totalItems: number;
-    datePipe: DatePipe;
 
     constructor(
         private auditsService: AuditsService,
-        private parseLinks: JhiParseLinks
+        private parseLinks: JhiParseLinks,
+        private paginationConfig: PaginationConfig,
+        private datePipe: DatePipe
     ) {
         this.itemsPerPage = ITEMS_PER_PAGE;
         this.page = 1;
         this.reverse = false;
         this.orderProp = 'timestamp';
-        this.datePipe = new DatePipe('en');
     }
 
     getAudits() {

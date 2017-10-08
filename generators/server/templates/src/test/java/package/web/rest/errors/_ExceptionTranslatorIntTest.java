@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -139,16 +139,6 @@ public class ExceptionTranslatorIntTest <% if (databaseType === 'cassandra') { %
             .andExpect(content().contentType(MediaTypes.PROBLEM))
             .andExpect(jsonPath("$.message").value("error.http.403"))
             .andExpect(jsonPath("$.detail").value("test access denied!"));
-    }
-
-    @Test
-    public void testUnauthorized() throws Exception {
-        mockMvc.perform(get("/test/unauthorized"))
-            .andExpect(status().isUnauthorized())
-            .andExpect(content().contentType(MediaTypes.PROBLEM))
-            .andExpect(jsonPath("$.message").value("error.http.401"))
-            .andExpect(jsonPath("$.path").value("/test/unauthorized"))
-            .andExpect(jsonPath("$.detail").value("test authentication failed!"));
     }
 
     @Test

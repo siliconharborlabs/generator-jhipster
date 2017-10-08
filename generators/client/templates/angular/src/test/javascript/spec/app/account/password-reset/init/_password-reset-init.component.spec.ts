@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,6 @@ import { Observable } from 'rxjs/Rx';
 import { <%=angularXAppName%>TestModule } from '../../../../test.module';
 import { PasswordResetInitComponent } from '../../../../../../../main/webapp/app/account/password-reset/init/password-reset-init.component';
 import { PasswordResetInitService } from '../../../../../../../main/webapp/app/account/password-reset/init/password-reset-init.service';
-import { EMAIL_NOT_FOUND_TYPE } from '../../../../../../../main/webapp/app/shared';
 
 describe('Component Tests', () => {
 
@@ -96,9 +95,7 @@ describe('Component Tests', () => {
             inject([PasswordResetInitService], (service: PasswordResetInitService) => {
                 spyOn(service, 'save').and.returnValue(Observable.throw({
                     status: 400,
-                    json: function() {
-                        return {type : EMAIL_NOT_FOUND_TYPE}
-                    }
+                    _body: 'email address not registered'
                 }));
                 comp.resetAccount.email = 'user@domain.com';
 

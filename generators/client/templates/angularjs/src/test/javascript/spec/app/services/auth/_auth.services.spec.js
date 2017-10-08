@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -50,9 +50,6 @@ describe('Service Tests', function () {
             spyOn(spiedAuthServerProvider, 'logout').and.callThrough();
 
             //WHEN
-            <%_ if (authenticationType === 'uaa') { _%>
-            $httpBackend.expectPOST('/auth/logout').respond();
-            <%_ } _%>
             authService.logout();
             //flush the backend to "execute" the request to do the expectedGET assertion.
             $httpBackend.flush();

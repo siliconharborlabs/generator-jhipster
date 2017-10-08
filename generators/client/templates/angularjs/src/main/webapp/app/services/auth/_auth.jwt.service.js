@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,11 +37,7 @@
         return service;
 
         function getToken () {
-<%_ if (authenticationType === 'uaa') { _%>
-            return null;
-<% } else { %>
             return $localStorage.authenticationToken || $sessionStorage.authenticationToken;
-<%_ } _%>
         }
 
         function login (credentials) {
@@ -49,13 +45,30 @@
             var data = {
                 username: credentials.username,
                 password: credentials.password,
-                rememberMe: credentials.rememberMe
+                grant_type: "password"
+            };
+            var headers = {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                "Authorization" : "Basic d2ViX2FwcDo="
             };
 
             return $http({
-                url: '/auth/login',
+                url: '<%= uaaBaseName.toLowerCase() %>/oauth/token',
                 method: 'post',
-                data: data
+                data: data,
+                headers: headers,
+                transformRequest: function(obj) {
+                    var str = [];
+                    for (var p in obj) {
+                        str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+                    }
+                    return str.join('&');
+                }
+            }).then(function (data) {
+                var accessToken = data.data["access_token"];
+                if (angular.isDefined(accessToken)) {
+                    service.storeAuthenticationToken(accessToken, credentials.rememberMe);
+                }
             });
 <% } else { %>
             var data = {
@@ -90,22 +103,16 @@
         }
 
         function storeAuthenticationToken(jwt, rememberMe) {
-<%_ if(authenticationType !== 'uaa') { _%>
             if(rememberMe){
                 $localStorage.authenticationToken = jwt;
             } else {
                 $sessionStorage.authenticationToken = jwt;
             }
-<%_ } _%>
         }
 
         function logout () {
-<%_ if(authenticationType === 'uaa') { _%>
-            return $http.post('/auth/logout');
-<% } else { %>
             delete $localStorage.authenticationToken;
             delete $sessionStorage.authenticationToken;
-<%_ } _%>
         }
     }
 })();

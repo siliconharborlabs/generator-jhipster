@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,15 +18,13 @@
 -%>
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-<%_ if (authenticationType !== 'oauth2') { _%>
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-<%_ } _%>
 import { JhiLanguageService } from 'ng-jhipster';
 
 import { ProfileService } from '../profiles/profile.service';
-import { <% if (enableTranslation) { %>JhiLanguageHelper, <% } %>Principal, <% if (authenticationType !== 'oauth2') { %>LoginModalService, <% } %>LoginService } from '../../shared';
+import { <% if (enableTranslation) { %>JhiLanguageHelper, <% } %>Principal, LoginModalService, LoginService } from '../../shared';
 
-import { VERSION } from '../../app.constants';
+import { VERSION, DEBUG_INFO_ENABLED } from '../../app.constants';
 
 @Component({
     selector: '<%=jhiPrefix%>-navbar',
@@ -40,13 +38,12 @@ import { VERSION } from '../../app.constants';
     ]
 })
 export class NavbarComponent implements OnInit {
+
     inProduction: boolean;
     isNavbarCollapsed: boolean;
     languages: any[];
     swaggerEnabled: boolean;
-    <%_ if (authenticationType !== 'oauth2') { _%>
     modalRef: NgbModalRef;
-    <%_ } _%>
     version: string;
 
     constructor(
@@ -56,9 +53,7 @@ export class NavbarComponent implements OnInit {
         private languageHelper: JhiLanguageHelper,
         <%_ } _%>
         private principal: Principal,
-        <%_ if (authenticationType !== 'oauth2') { _%>
         private loginModalService: LoginModalService,
-        <%_ } _%>
         private profileService: ProfileService,
         private router: Router
     ) {
@@ -94,11 +89,7 @@ export class NavbarComponent implements OnInit {
     }
 
     login() {
-        <%_ if (authenticationType !== 'oauth2') { _%>
         this.modalRef = this.loginModalService.open();
-        <%_ } else { _%>
-        this.loginService.login();
-        <%_ } _%>
     }
 
     logout() {

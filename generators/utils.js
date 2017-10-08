@@ -1,7 +1,7 @@
 /**
  * Copyright 2013-2017 the original author or authors from the StackStack project.
  *
- * This file is part of the StackStack project, see http://stackstack.io/
+ * This file is part of the StackStack project, see http://www.jhipster.tech/
  * for more information.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,11 +38,6 @@ module.exports = {
     getJavadoc
 };
 
-/**
- * Rewrite file with passed arguments
- * @param {object} args argument object (containing path, file, haystack, etc properties)
- * @param {object} generator reference to the generator
- */
 function rewriteFile(args, generator) {
     args.path = args.path || process.cwd();
     const fullPath = path.join(args.path, args.file);
@@ -52,11 +47,6 @@ function rewriteFile(args, generator) {
     generator.fs.write(fullPath, body);
 }
 
-/**
- * Replace content
- * @param {object} args argument object
- * @param {object} generator reference to the generator
- */
 function replaceContent(args, generator) {
     args.path = args.path || process.cwd();
     const fullPath = path.join(args.path, args.file);
@@ -68,21 +58,10 @@ function replaceContent(args, generator) {
     generator.fs.write(fullPath, body);
 }
 
-/**
- *
- * @param {string} str string
- * @returns {string} string with regular expressions escaped
- */
 function escapeRegExp(str) {
     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&'); // eslint-disable-line
 }
 
-/**
- * rewrite using the passed argument object
- *
- * @param {object} args arguments object (containing splicable, haystack, needle properties) to be used
- * @returns {*} re-written file
- */
 function rewrite(args) {
     // check if splicable is already in the body text
     const re = new RegExp(args.splicable.map(line => `\\s*${escapeRegExp(line)}`).join('\n'));
@@ -116,43 +95,19 @@ function rewrite(args) {
     return lines.join('\n');
 }
 
-/**
- * Convenient function to convert string into valid java class name
- * Note: _.classify uses _.titleize which lowercase the string,
- * so if the user chooses a proper ClassName it will not rename properly
- *
- * @param string string to 'class'-ify
- * @returns {string} 'class'-ified string
- */
+// _.classify uses _.titleize which lowercase the string,
+// so if the user chooses a proper ClassName it will not rename properly
 function classify(string) {
     string = string.replace(/[\W_](\w)/g, match => ` ${match[1].toUpperCase()}`).replace(/\s/g, '');
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-/**
- * Rewrite JSON file
- *
- * @param {string} filePath file path
- * @param {function} rewriteFile rewriteFile function
- * @param {object} generator reference to the generator
- */
 function rewriteJSONFile(filePath, rewriteFile, generator) {
     const jsonObj = generator.fs.readJSON(filePath);
     rewriteFile(jsonObj, generator);
     generator.fs.writeJSON(filePath, jsonObj, null, 2);
 }
 
-/**
- * Copy web resources
- *
- * @param {string} source source
- * @param {string} dest destination
- * @param {regex} regex regex
- * @param {string} type type of resource (html, js, etc)
- * @param {object} generator reference to the generator
- * @param {object} opt options
- * @param {any} template template
- */
 function copyWebResource(source, dest, regex, type, generator, opt = {}, template) {
     if (generator.enableTranslation) {
         generator.template(source, dest, generator, opt);
@@ -160,10 +115,10 @@ function copyWebResource(source, dest, regex, type, generator, opt = {}, templat
         renderContent(source, generator, generator, opt, (body) => {
             body = body.replace(regex, '');
             switch (type) {
-            case 'html':
+            case 'html' :
                 body = replacePlaceholders(body, generator);
                 break;
-            case 'js':
+            case 'js' :
                 body = replaceTitle(body, generator);
                 break;
             default:
@@ -174,15 +129,6 @@ function copyWebResource(source, dest, regex, type, generator, opt = {}, templat
     }
 }
 
-/**
- * Render content
- *
- * @param {string} source source
- * @param {object} generator reference to the generator
- * @param {any} context context
- * @param {object} options options
- * @param {function} cb callback function
- */
 function renderContent(source, generator, context, options, cb) {
     ejs.renderFile(generator.templatePath(source), context, options, (err, res) => {
         if (!err) {
@@ -193,12 +139,6 @@ function renderContent(source, generator, context, options, cb) {
     });
 }
 
-/**
- *
- * @param {string} body html body
- * @param {object} generator reference to the generator
- * @returns string with pageTitle replaced
- */
 function replaceTitle(body, generator) {
     const re = /pageTitle[\s]*:[\s]*['|"]([a-zA-Z0-9.\-_]+)['|"]/g;
     let match;
@@ -216,12 +156,6 @@ function replaceTitle(body, generator) {
     return body;
 }
 
-/**
- *
- * @param {string} body html body
- * @param {object} generator reference to the generator
- * @returns string with placeholders replaced
- */
 function replacePlaceholders(body, generator) {
     const re = /placeholder=['|"]([{]{2}['|"]([a-zA-Z0-9.\-_]+)['|"][\s][|][\s](translate)[}]{2})['|"]/g;
     let match;
@@ -239,12 +173,6 @@ function replacePlaceholders(body, generator) {
     return body;
 }
 
-/**
- *
- * @param key i18n key
- * @param {object} generator reference to the generator
- * @returns parsed json file
- */
 function geti18nJson(key, generator) {
     const i18nDirectory = `${LANGUAGES_MAIN_SRC_DIR}i18n/en/`;
     const name = _.kebabCase(key.split('.')[0]);
@@ -269,12 +197,6 @@ function geti18nJson(key, generator) {
     }
 }
 
-/**
- *
- * @param obj object to find in
- * @param path path to traverse
- * @param placeholder placeholder
- */
 function deepFind(obj, path, placeholder) {
     const paths = path.split('.');
     let current = obj;
@@ -291,13 +213,6 @@ function deepFind(obj, path, placeholder) {
     return current;
 }
 
-/**
- * Convert passed block of string to javadoc formatted string.
- *
- * @param {string} text text to convert to javadoc format
- * @param {number} indentSize indent size
- * @returns javadoc formatted string
- */
 function getJavadoc(text, indentSize) {
     if (!text) {
         text = '';

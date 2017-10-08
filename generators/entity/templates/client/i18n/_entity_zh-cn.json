@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,15 +21,15 @@
         "<%= entityTranslationKey %>" : {
             "home": {
                 "title": "<%= entityClassPluralHumanized  %>",
-                "createLabel": "创建新 <%= entityClassHumanized %>",
-                "createOrEditLabel": "创建或编辑 <%= entityClassHumanized %>"<% if (searchEngine === 'elasticsearch') { %>,
-                "search": "查找 <%= entityClassHumanized %>"<% } %>
+                "createLabel": "Create a new <%= entityClassHumanized %>",
+                "createOrEditLabel": "Create or edit a <%= entityClassHumanized %>"<% if (searchEngine === 'elasticsearch') { %>,
+                "search": "Search for <%= entityClassHumanized %>"<% } %>
             },<% if (!microserviceAppName) { %>
-            "created": "<%= entityClassHumanized %> {{ param }} 创建成功",
-            "updated": "<%= entityClassHumanized %> {{ param }} 更新成功",
-            "deleted": "<%= entityClassHumanized %> {{ param }} 删除成功",<% } %>
+            "created": "A new <%= entityClassHumanized %> is created with identifier {{ param }}",
+            "updated": "A <%= entityClassHumanized %> is updated with identifier {{ param }}",
+            "deleted": "A <%= entityClassHumanized %> is deleted with identifier {{ param }}",<% } %>
             "delete": {
-                "question": "你确定要删除 <%= entityClassHumanized %> {{ id }} 吗？"
+                "question": "Are you sure you want to delete <%= entityClassHumanized %> {{ id }}?"
             },
             "detail": {
                 "title": "<%= entityClassHumanized %>"
@@ -40,9 +40,9 @@
     }<% if (microserviceAppName) { %>,
     "<%= microserviceAppName %>": {
         "<%= entityTranslationKey %>" : {
-            "created": "<%= entityClassHumanized %> {{ param }} 创建成功",
-            "updated": "<%= entityClassHumanized %> {{ param }} 更新成功",
-            "deleted": "<%= entityClassHumanized %> {{ param }} 删除成功"
+            "created": "A new <%= entityClassHumanized %> is created with identifier {{ param }}",
+            "updated": "A <%= entityClassHumanized %> is updated with identifier {{ param }}",
+            "deleted": "A <%= entityClassHumanized %> is deleted with identifier {{ param }}"
         }
     }<% } %>
 }

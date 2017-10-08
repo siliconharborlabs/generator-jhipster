@@ -1,7 +1,7 @@
 <%#
  Copyright 2013-2017 the original author or authors from the StackStack project.
 
- This file is part of the StackStack project, see http://stackstack.io/
+ This file is part of the StackStack project, see http://www.jhipster.tech/
  for more information.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@
 apply plugin: "org.detoeuf.swagger-codegen"
 
 swagger {
-    inputSpec = file('<%= SERVER_MAIN_RES_DIR %>swagger/api.yml').absolutePath
+    inputSpec = '<%= SERVER_MAIN_RES_DIR %>swagger/api.yml'
     outputDir = file('build/swagger')
     lang = 'spring'
 
